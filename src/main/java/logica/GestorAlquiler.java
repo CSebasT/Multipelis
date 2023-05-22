@@ -5,36 +5,29 @@ import org.hibernate.SessionFactory;
 import persistencia.HibernateUtil;
 
 public class GestorAlquiler {
-    private Alquiler alquiler;
-    private Ejemplar ejemplar;
-
-    //private Pelicula pelicula;
 
     public GestorAlquiler(){
-
     }
+
     public Alquiler registrarAlquiler(Cliente cliente, Ejemplar ejemplar){
-        this.alquiler = new Alquiler(cliente,ejemplar);
+        Alquiler alquiler = new Alquiler(cliente,ejemplar);
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(this.alquiler);
+        session.save(alquiler);
         session.getTransaction().commit();
         return alquiler;
     }
 
-
     public Alquiler buscarAlquiler(Long numeroAlquiler){
-        this.alquiler = new Alquiler();
-
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        this.alquiler = session.get(Alquiler.class, numeroAlquiler);
+        Alquiler alquiler = session.get(Alquiler.class, numeroAlquiler);
         session.getTransaction().commit();
 
-        return this.alquiler;
+        return alquiler;
     }
 
     public void finalizarAlquiler(Alquiler alquiler){
@@ -48,12 +41,11 @@ public class GestorAlquiler {
     }
 
     public Ejemplar buscarEjemplar(String codigo) {
-        this.ejemplar = new Ejemplar();
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        this.ejemplar = session.get(Ejemplar.class, codigo);
-        return this.ejemplar;
+        Ejemplar ejemplar = session.get(Ejemplar.class, codigo);
+        return ejemplar;
     }
     /*
     public void registrarEjemplar(String codigo, Boolean estado, Pelicula pelicula) {

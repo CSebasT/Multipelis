@@ -6,15 +6,15 @@ import org.hibernate.query.Query;
 import persistencia.HibernateUtil;
 
 public class GestorCliente {
-    private Cliente cliente;
+
     public  void registrarCliente(String cedula, String nombre, String apellido, String correo, String direccion, String telefono) {
-        this.cliente = new Cliente();
-        this.cliente.setCedula(cedula);
-        this.cliente.setNombre(nombre);
-        this.cliente.setApellido(apellido);
-        this.cliente.setDireccion(direccion);
-        this.cliente.setTelefono(telefono);
-        this.cliente.setCorreo(correo);
+        Cliente cliente = new Cliente();
+        cliente.setCedula(cedula);
+        cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        cliente.setDireccion(direccion);
+        cliente.setTelefono(telefono);
+        cliente.setCorreo(correo);
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -24,7 +24,7 @@ public class GestorCliente {
             session.getTransaction().rollback();
             return;
         }
-        session.save(this.cliente);
+        session.save(cliente);
         session.getTransaction().commit();
     }
 
@@ -32,8 +32,8 @@ public class GestorCliente {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        this.cliente = session.get(Cliente.class, cedula);
-        return this.cliente;
+        Cliente cliente = session.get(Cliente.class, cedula);
+        return cliente;
     }
 
     public boolean verificarExistenciaCliente(Session session, String cedulaAVerificar){

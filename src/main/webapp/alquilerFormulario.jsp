@@ -12,19 +12,93 @@
 <body>
 <div class="container">
     <h1>Alquiler</h1>
-    <form action="alquileres?accion=registrar" method="post" class="form-group" name="buscarDatosParaAlquiler">
+    <form action="alquileres?accion=registrar" method="post" class="form-group needs-validation" onsubmit="return validarCedula(); validarCodigo();" name="buscarDatosParaAlquiler" novalidate>
         <div class="mb-3">
             <label for="codigoEjemplar" class="form-label">Código del Ejemplar</label>
-            <input type="number" class="form-control" name="codigoEjemplar" id="codigoEjemplar" placeholder="Código">
+            <input type="text" class="form-control" name="codigoEjemplar" id="codigoEjemplar" placeholder="Código" required>
+            <div class="valid-feedback">
+                Completo
+            </div>
+            <div class="invalid-feedback">
+                Campo Vacio o Erroneo, ingresa nuevamente
+            </div>
         </div>
         <div class="mb-3">
             <label for="cedulaCliente" class="form-label">CI del Cliente</label>
-            <input type="number" class="form-control" name="cedulaCliente" id="cedulaCliente" placeholder="10 digitos">
+            <input type="text" class="form-control" name="cedulaCliente" id="cedulaCliente" placeholder="10 digitos" required>
+            <div class="valid-feedback">
+                Completo
+            </div>
+            <div class="invalid-feedback">
+                Campo Vacio o Erroneo, ingresa nuevamente
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Alquilar</button>
     </form>
 </div>
+<script>
 
+    function validarCedula(input) {
+        const cedulaRegex = /^\d{10}$/;
+        if (!cedulaRegex.test(input.value)) {
+            input.setCustomValidity("Ingrese una cédula válida (10 dígitos)");
+        } else {
+            input.setCustomValidity("");
+        }
+    }
+
+    function validarCodigo(input) {
+        const codigoRegex = /^\d{4}$/;
+        if (!codigoRegex.test(input.value)) {
+            input.setCustomValidity("Ingrese un código válido de 4 dígitos (por ejemplo, 0001)");
+        } else {
+            input.setCustomValidity("");
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const codigoInput = document.querySelector('#codigoEjemplar');
+        const cedulaInput = document.querySelector('#cedulaCliente');
+
+        cedulaInput.addEventListener('input', function() {
+            validarCedula(cedulaInput);
+        });
+
+        codigoInput.addEventListener('input', function() {
+            validarCodigo(codigoInput);
+        });
+
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        });
+    });
+</script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
