@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import persistencia.*;
 
+import java.util.Date;
+
 public class GestorAlquiler {
     public GestorAlquiler(){
     }
@@ -12,6 +14,9 @@ public class GestorAlquiler {
         double precio = calcularPrecioAlquiler(cliente,ejemplar,dias);
 
         Alquiler alquiler = new Alquiler(cliente,ejemplar, precio);
+
+        int numeroDeUsos = ejemplar.getNumeroDeUsos() +1;
+        ejemplar.setNumeroDeUsos(numeroDeUsos);
 
         PersistenciaAlquiler.registrarAlquiler(alquiler);
 
@@ -47,12 +52,14 @@ public class GestorAlquiler {
              precioAlquiler = 0;
              cliente.setPuntosPorFidelidad(0);
          }
-
+         Date fechaActual = new Date();
+         Date fechaDeDescuento = ejemplar.getPelicula().getFechaDescuento();
+         if((fechaActual.getDay()==fechaDeDescuento.getDay()) && (fechaActual.getMonth()==fechaDeDescuento.getMonth())){
+             precioAlquiler = precioAlquiler * (1 - ejemplar.getPelicula().getDescuentoPorGenero());
+         }
          return precioAlquiler;
-
-
-
     }
+
 
 
     /*

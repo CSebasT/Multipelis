@@ -42,7 +42,7 @@ public class ControladorAlquiler extends HttpServlet {
         Cliente cliente = gestorCliente.buscarCliente(request.getParameter("cedulaCliente"));
         request.setAttribute("cliente",cliente);
         request.setAttribute("pelicula", pelicula);
-        Alquiler alquiler = gestorAlquiler.registrarAlquiler(cliente,ejemplar);
+        Alquiler alquiler = gestorAlquiler.registrarAlquiler(cliente,ejemplar,1);
         request.setAttribute("alquiler", alquiler);
         request.getRequestDispatcher("/alquilerInfo.jsp").forward(request, response);
     }
