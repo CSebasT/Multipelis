@@ -18,6 +18,8 @@ public class Cliente {
     private String direccion;
     @Column(name = "telefono", nullable = true, length = 10)
     private String telefono;
+    @Column(name = "puntosPorFidelidad", nullable = true)
+    private int puntosPorFidelidad;
 
 
     public void registrarCliente(){
@@ -69,4 +71,11 @@ public class Cliente {
         this.telefono = telefono;
     }
 
+    public int getPuntosPorFidelidad() {
+        return puntosPorFidelidad;
+    }
+
+    public void setPuntosPorFidelidad(int puntosPorFidelidad) {
+        this.puntosPorFidelidad = puntosPorFidelidad;
+    }
 }

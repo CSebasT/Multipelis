@@ -23,17 +23,18 @@ public class Alquiler {
     private int dias;
 
     @Column(name = "precio", nullable = false)
-    private int precio;
+    private double precio;
 
     public Alquiler(){
 
     }
 
-    public Alquiler(Cliente cliente, Ejemplar ejemplar) {
+    public Alquiler(Cliente cliente, Ejemplar ejemplar, double precio) {
         this.estadoDevolucion = false;
         this.cliente = cliente;
         ejemplar.setEstadoDisponibilidad(false);
         this.ejemplar = ejemplar;
+        this.precio = precio;
 
     }
 
@@ -68,6 +69,21 @@ public class Alquiler {
         this.ejemplar = ejemplar;
     }
 
+    public int getDias() {
+        return dias;
+    }
+
+    public void setDias(int dias) {
+        this.dias = dias;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
     public void finalizar() {
         setEstadoDevolucion(true);

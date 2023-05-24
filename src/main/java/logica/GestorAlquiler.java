@@ -5,14 +5,18 @@ import org.hibernate.SessionFactory;
 import persistencia.*;
 
 public class GestorAlquiler {
-
     public GestorAlquiler(){
     }
 
-    public Alquiler registrarAlquiler(Cliente cliente, Ejemplar ejemplar){
-        Alquiler alquiler = new Alquiler(cliente,ejemplar);
+    public Alquiler registrarAlquiler(Cliente cliente, Ejemplar ejemplar, int dias){
+        double precio = calcularPrecioAlquiler(cliente,ejemplar,dias);
+
+        Alquiler alquiler = new Alquiler(cliente,ejemplar, precio);
 
         PersistenciaAlquiler.registrarAlquiler(alquiler);
+
+
+
         return alquiler;
     }
 
@@ -30,6 +34,24 @@ public class GestorAlquiler {
     public Ejemplar buscarEjemplar(String codigo) {
         Ejemplar ejemplar = PersistenciaAlquiler.consultarEjemplar(codigo);
         return ejemplar;
+    }
+
+    public double calcularPrecioAlquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
+
+         int puntosPorFidelidad;
+         double precioAlquiler = ejemplar.getCostoPorDia() * dias;
+         puntosPorFidelidad = 5 + cliente.getPuntosPorFidelidad();
+         cliente.setPuntosPorFidelidad(puntosPorFidelidad);
+
+         if(puntosPorFidelidad == 100){
+             precioAlquiler = 0;
+             cliente.setPuntosPorFidelidad(0);
+         }
+
+         return precioAlquiler;
+
+
+
     }
 
 
