@@ -3,7 +3,7 @@ package logica;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import persistencia.HibernateUtil;
+import persistencia.*;
 
 public class GestorCliente {
 
@@ -16,32 +16,15 @@ public class GestorCliente {
         cliente.setTelefono(telefono);
         cliente.setCorreo(correo);
 
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        if(verificarExistenciaCliente(session, cedula )){
-            //System.out.println("Si existe");
-            session.getTransaction().rollback();
-            return;
-        }
-        session.save(cliente);
-        session.getTransaction().commit();
+        PersistenciaCliente.registrarCliente(cedula, cliente);
     }
 
     public Cliente buscarCliente(String cedula) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        Cliente cliente = session.get(Cliente.class, cedula);
+        Cliente cliente = PersistenciaCliente.consultarCliente(cedula);
         return cliente;
     }
 
-    public boolean verificarExistenciaCliente(Session session, String cedulaAVerificar){
-        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM logica.Cliente WHERE cedula = :cedulaAVerificar", Long.class);
-        query.setParameter("cedulaAVerificar", cedulaAVerificar);
 
-        Long count = query.uniqueResult();
 
-        return count > 0;
-    }
+
 }

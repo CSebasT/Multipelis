@@ -1,8 +1,8 @@
 package logica;
 
 import javax.persistence.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,6 +23,11 @@ public class Pelicula {
     private String genero;
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
+    @Column(name = "fechaDescuento", nullable = false, length = 50)
+    @Temporal(TemporalType.DATE)
+    private Date fechaDescuento;
+    @Column(name = "descuentoPorGenero", nullable = false)
+    private Double descuentoPorGenero;
 
     public String getCodigo() {
         return codigo;
@@ -52,8 +57,8 @@ public class Pelicula {
         return añoLanzamiento;
     }
 
-    public void setAñoLanzamiento(int anoLanzamiento) {
-        this.añoLanzamiento = anoLanzamiento;
+    public void setAñoLanzamiento(int añoLanzamiento) {
+        this.añoLanzamiento = añoLanzamiento;
     }
 
     public String getSinopsis() {
@@ -78,5 +83,21 @@ public class Pelicula {
 
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
+    }
+
+    public Date getFechaDescuento() {
+        return fechaDescuento;
+    }
+
+    public void setFechaDescuento(Date fechaDescuento) {
+        this.fechaDescuento = fechaDescuento;
+    }
+
+    public Double getDescuentoPorGenero() {
+        return descuentoPorGenero;
+    }
+
+    public void setDescuentoPorGenero(Double descuentoPorGenero) {
+        this.descuentoPorGenero = descuentoPorGenero;
     }
 }

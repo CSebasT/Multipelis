@@ -19,6 +19,12 @@ public class Alquiler {
     @JoinColumn(name = "codigo_ejemplar")
     private Ejemplar ejemplar;
 
+    @Column(name = "dias", nullable = false)
+    private int dias;
+
+    @Column(name = "precio", nullable = false)
+    private int precio;
+
     public Alquiler(){
 
     }

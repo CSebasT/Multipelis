@@ -15,6 +15,11 @@ public class Ejemplar {
     @JoinColumn(name = "codigo_pelicula")
     private Pelicula pelicula;
 
+    @Column(name = "costoPorDia", nullable = false)
+    private double costoPorDia;
+    @Column(name = "numeroDeUsos", nullable = false)
+    private int numeroDeUsos;
+
     public Ejemplar(){
 
     }
@@ -41,5 +46,21 @@ public class Ejemplar {
 
     public void setPelicula(Pelicula pelicula) {
         this.pelicula = pelicula;
+    }
+
+    public double getCostoPorDia() {
+        return costoPorDia;
+    }
+
+    public void setCostoPorDia(double costoPorDia) {
+        this.costoPorDia = costoPorDia;
+    }
+
+    public int getNumeroDeUsos() {
+        return numeroDeUsos;
+    }
+
+    public void setNumeroDeUsos(int numeroDeUsos) {
+        this.numeroDeUsos = numeroDeUsos;
     }
 }
