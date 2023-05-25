@@ -74,4 +74,19 @@ public class Ejemplar {
     public void setEstaDesgastado(boolean estaDesgastado) {
         this.estaDesgastado = estaDesgastado;
     }
+
+    public void devolver(double puntaje) {
+        estadoDisponibilidad = true;
+        estaDesgastado = fueUsadaCincuentaVeces();
+        pelicula.agregaPuntaje(puntaje);
+    }
+
+    private boolean fueUsadaCincuentaVeces() {
+        return numeroDeUsos>=50;
+    }
+
+    public void alquilar() {
+        estadoDisponibilidad = false;
+        numeroDeUsos = numeroDeUsos + 1;
+    }
 }

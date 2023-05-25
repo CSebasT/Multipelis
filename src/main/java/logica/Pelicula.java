@@ -2,6 +2,7 @@ package logica;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -24,10 +25,14 @@ public class Pelicula {
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
     @Column(name = "fechaDescuento", nullable = false, length = 50)
-    @Temporal(TemporalType.DATE)
-    private Date fechaDescuento;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar fechaDescuento;
     @Column(name = "descuentoPorGenero", nullable = false)
     private double descuentoPorGenero;
+    @Column(name = "puntajeTotal", nullable = false)
+    private double puntajeTotal;
+    @Column(name = "cantidadDePuntajes", nullable = false)
+    private int cantidadDePuntajes;
 
     public String getCodigo() {
         return codigo;
@@ -85,11 +90,11 @@ public class Pelicula {
         this.ejemplares = ejemplares;
     }
 
-    public Date getFechaDescuento() {
+    public Calendar getFechaDescuento() {
         return fechaDescuento;
     }
 
-    public void setFechaDescuento(Date fechaDescuento) {
+    public void setFechaDescuento(Calendar fechaDescuento) {
         this.fechaDescuento = fechaDescuento;
     }
 
@@ -99,5 +104,25 @@ public class Pelicula {
 
     public void setDescuentoPorGenero(double descuentoPorGenero) {
         this.descuentoPorGenero = descuentoPorGenero;
+    }
+
+    public double getPuntajeTotal() {
+        return puntajeTotal;
+    }
+
+    public void setPuntajeTotal(double puntajeTotal) {
+        this.puntajeTotal = puntajeTotal;
+    }
+
+    public int getCantidadDePuntajes() {
+        return cantidadDePuntajes;
+    }
+
+    public void setCantidadDePuntajes(int cantidadDePuntajes) {
+        this.cantidadDePuntajes = cantidadDePuntajes;
+    }
+
+    public void agregaPuntaje(double nuevoPuntaje) {
+        puntajeTotal = (puntajeTotal*cantidadDePuntajes+nuevoPuntaje)/cantidadDePuntajes+1;
     }
 }

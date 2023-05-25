@@ -4,7 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import persistencia.*;
 
-import java.util.Date;
+import java.util.Calendar;
+
 
 public class GestorAlquiler {
     public GestorAlquiler() {
@@ -12,15 +13,8 @@ public class GestorAlquiler {
 
     public Alquiler registrarAlquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
         double precio = calcularPrecioAlquiler(cliente, ejemplar, dias);
-
         Alquiler alquiler = new Alquiler(cliente, ejemplar, precio);
-
-        int numeroDeUsos = ejemplar.getNumeroDeUsos() + 1;
-        ejemplar.setNumeroDeUsos(numeroDeUsos);
-
         PersistenciaAlquiler.registrarAlquiler(alquiler);
-
-
         return alquiler;
     }
 
@@ -29,9 +23,8 @@ public class GestorAlquiler {
         return alquiler;
     }
 
-    public void finalizarAlquiler(Alquiler alquiler) {
-        alquiler.finalizar();
-
+    public void finalizarAlquiler(Alquiler alquiler, double puntuacion) {
+        alquiler.finalizar(puntuacion);
         PersistenciaAlquiler.actualizarAlquiler(alquiler);
     }
 
@@ -42,29 +35,31 @@ public class GestorAlquiler {
     }
 
     public double calcularPrecioAlquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
-
-        int puntosPorFidelidad;
         double precioAlquiler = ejemplar.getCostoPorDia() * dias;
-        puntosPorFidelidad = 5 + cliente.getPuntosPorFidelidad();
-        cliente.setPuntosPorFidelidad(puntosPorFidelidad);
+        int puntosPorFidelidad;
 
+        double temp = 0;
+        puntosPorFidelidad = cliente.getPuntosPorFidelidad();
         if (puntosPorFidelidad == 25) {
-            precioAlquiler = precioAlquiler - precioAlquiler * 0.25;
+            temp = 0.25;
         } else if (puntosPorFidelidad == 50) {
-            precioAlquiler = precioAlquiler - precioAlquiler * 0.5;
+            temp = 0.5;
         } else if (puntosPorFidelidad == 75) {
-            precioAlquiler = precioAlquiler - precioAlquiler * 0.75;
+            temp = 0.75;
         } else if (puntosPorFidelidad == 100) {
-            precioAlquiler = 0;
+            temp = 1;
             cliente.setPuntosPorFidelidad(0);
         }
+        precioAlquiler = precioAlquiler * (1 - temp);
 
+        temp = 0;
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaDeDescuento = ejemplar.getPelicula().getFechaDescuento();
 
-        Date fechaActual = new Date();
-        Date fechaDeDescuento = ejemplar.getPelicula().getFechaDescuento();
-        if ((fechaActual.getDay() == fechaDeDescuento.getDay()) && (fechaActual.getMonth() == fechaDeDescuento.getMonth())) {
-            precioAlquiler = precioAlquiler * (1 - ejemplar.getPelicula().getDescuentoPorGenero());
+        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH)) && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
+            temp  = ejemplar.getPelicula().getDescuentoPorGenero();
         }
+        precioAlquiler = precioAlquiler * (1 - temp);
         return precioAlquiler;
     }
 

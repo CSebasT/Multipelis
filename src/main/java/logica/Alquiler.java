@@ -32,10 +32,10 @@ public class Alquiler {
     public Alquiler(Cliente cliente, Ejemplar ejemplar, double precio) {
         this.estadoDevolucion = false;
         this.cliente = cliente;
-        ejemplar.setEstadoDisponibilidad(false);
         this.ejemplar = ejemplar;
         this.precio = precio;
-
+        ejemplar.alquilar();
+        cliente.aumentarPuntos();
     }
 
     public Long getNumero() {
@@ -85,14 +85,8 @@ public class Alquiler {
         this.precio = precio;
     }
 
-    public void finalizar() {
+    public void finalizar(double puntaje) {
         setEstadoDevolucion(true);
-        ejemplar.setEstadoDisponibilidad(true);
-        ejemplar.setEstaDesgastado(fueUsadaCincuentaVeces(ejemplar)? true : false);
-
-    }
-
-    private boolean fueUsadaCincuentaVeces(Ejemplar ejemplar) {
-        return ejemplar.getNumeroDeUsos()>=50;
+        ejemplar.devolver(puntaje);
     }
 }

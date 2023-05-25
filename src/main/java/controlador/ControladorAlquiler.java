@@ -30,7 +30,7 @@ public class ControladorAlquiler extends HttpServlet {
     private void devolverAlquiler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String numero = request.getParameter("numeroAlquiler");
         Alquiler alquiler = gestorAlquiler.buscarAlquiler(Long.parseLong(numero));
-        gestorAlquiler.finalizarAlquiler(alquiler);
+        gestorAlquiler.finalizarAlquiler(alquiler,4);
         request.setAttribute("pelicula",alquiler.getEjemplar().getPelicula());
         request.setAttribute("cliente",alquiler.getCliente());
         request.getRequestDispatcher("/devolucionInfo.jsp").forward(request, response);

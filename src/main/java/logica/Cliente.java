@@ -78,4 +78,9 @@ public class Cliente {
     public void setPuntosPorFidelidad(int puntosPorFidelidad) {
         this.puntosPorFidelidad = puntosPorFidelidad;
     }
+
+
+    public void aumentarPuntos() {
+        puntosPorFidelidad = 5 + puntosPorFidelidad;
+    }
 }
