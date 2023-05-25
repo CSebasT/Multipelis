@@ -46,11 +46,19 @@ public class GestorAlquiler {
          puntosPorFidelidad = 5 + cliente.getPuntosPorFidelidad();
          cliente.setPuntosPorFidelidad(puntosPorFidelidad);
 
-         if(puntosPorFidelidad == 100){
+         if(puntosPorFidelidad == 25){
+             precioAlquiler = precioAlquiler - precioAlquiler * 0.25;
+         } else if (puntosPorFidelidad == 50){
+             precioAlquiler = precioAlquiler - precioAlquiler * 0.5;
+         } else if (puntosPorFidelidad == 75) {
+             precioAlquiler = precioAlquiler - precioAlquiler * 0.75;
+         } else if (puntosPorFidelidad == 100) {
              precioAlquiler = 0;
              cliente.setPuntosPorFidelidad(0);
          }
-         Date fechaActual = new Date();
+
+
+        Date fechaActual = new Date();
          Date fechaDeDescuento = ejemplar.getPelicula().getFechaDescuento();
          if((fechaActual.getDay()==fechaDeDescuento.getDay()) && (fechaActual.getMonth()==fechaDeDescuento.getMonth())){
              precioAlquiler = precioAlquiler * (1 - ejemplar.getPelicula().getDescuentoPorGenero());
