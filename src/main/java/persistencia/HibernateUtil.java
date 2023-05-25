@@ -5,43 +5,26 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory;
-
-    static {
-        try {
-            // Cargar la configuración de hibernate.cfg.xml
-            Configuration configuration = new Configuration().configure();
-
-            // Construir la sesión de fábrica (SessionFactory)
-            sessionFactory = configuration.buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Error al inicializar la SessionFactory: " + ex);
-            throw new ExceptionInInitializerError(ex);
+    private static  SessionFactory sessionFactory;
+    public static void HibernateUtil(){ }
+    public static synchronized SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                Configuration configuration = new Configuration().configure();
+                sessionFactory = configuration.buildSessionFactory();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-    }
-
-    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
-    public static void shutdown() {
-        getSessionFactory().close();
+    public static Session getSession (){
+        return getSessionFactory().openSession();
     }
 
-    public static void guardar(Object objeto){
-        Session session = sessionFactory.openSession();
-        try {
-            session.beginTransaction();
-            session.save(objeto);
-            session.getTransaction().commit();
-        } catch (Exception e){
-            if (session.getTransaction() != null) {
-                session.getTransaction().rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+    public static void closeSessionFactory() {
+        sessionFactory.close();
     }
 }
 
