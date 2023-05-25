@@ -88,5 +88,11 @@ public class Alquiler {
     public void finalizar() {
         setEstadoDevolucion(true);
         ejemplar.setEstadoDisponibilidad(true);
+        ejemplar.setEstaDesgastado(fueUsadaCincuentaVeces(ejemplar)? true : false);
+
+    }
+
+    private boolean fueUsadaCincuentaVeces(Ejemplar ejemplar) {
+        return ejemplar.getNumeroDeUsos()>=50;
     }
 }

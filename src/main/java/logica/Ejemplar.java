@@ -19,6 +19,9 @@ public class Ejemplar {
     private double costoPorDia;
     @Column(name = "numeroDeUsos", nullable = false)
     private int numeroDeUsos;
+    @Column(name = "estaDesgastado", nullable = false)
+    private boolean estaDesgastado;
+
 
     public Ejemplar(){
 
@@ -62,5 +65,13 @@ public class Ejemplar {
 
     public void setNumeroDeUsos(int numeroDeUsos) {
         this.numeroDeUsos = numeroDeUsos;
+    }
+
+    public boolean isEstaDesgastado() {
+        return estaDesgastado;
+    }
+
+    public void setEstaDesgastado(boolean estaDesgastado) {
+        this.estaDesgastado = estaDesgastado;
     }
 }

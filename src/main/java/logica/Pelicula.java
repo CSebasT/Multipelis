@@ -27,7 +27,7 @@ public class Pelicula {
     @Temporal(TemporalType.DATE)
     private Date fechaDescuento;
     @Column(name = "descuentoPorGenero", nullable = false)
-    private Double descuentoPorGenero;
+    private double descuentoPorGenero;
 
     public String getCodigo() {
         return codigo;
@@ -93,11 +93,11 @@ public class Pelicula {
         this.fechaDescuento = fechaDescuento;
     }
 
-    public Double getDescuentoPorGenero() {
+    public double getDescuentoPorGenero() {
         return descuentoPorGenero;
     }
 
-    public void setDescuentoPorGenero(Double descuentoPorGenero) {
+    public void setDescuentoPorGenero(double descuentoPorGenero) {
         this.descuentoPorGenero = descuentoPorGenero;
     }
 }
