@@ -19,9 +19,6 @@ public class GestorAlquiler {
         ejemplar.setNumeroDeUsos(numeroDeUsos);
 
         PersistenciaAlquiler.registrarAlquiler(alquiler);
-
-
-
         return alquiler;
     }
 
