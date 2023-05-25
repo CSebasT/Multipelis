@@ -18,6 +18,7 @@ public class GestorAlquiler {
         int numeroDeUsos = ejemplar.getNumeroDeUsos() +1;
         ejemplar.setNumeroDeUsos(numeroDeUsos);
 
+
         PersistenciaAlquiler.registrarAlquiler(alquiler);
         return alquiler;
     }
