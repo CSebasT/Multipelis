@@ -95,11 +95,13 @@ public class Alquiler {
 
     public double calcularPrecio() {
         double precioAlquiler = ejemplar.getCostoPorDia() * dias;
-        double temp = cliente.obtenerDescuentoFidelidad();
-        precioAlquiler = precioAlquiler * (1 - temp);
 
-        temp = ejemplar.obtenerDescuentoGenero();
-        precioAlquiler = precioAlquiler * (1 - temp);
+        double descuentoFidelidad = cliente.obtenerDescuentoFidelidad();
+        precioAlquiler = precioAlquiler * (1 - descuentoFidelidad);
+
+        double descuentoGenero = ejemplar.obtenerDescuentoGenero();
+        precioAlquiler = precioAlquiler * (1 - descuentoGenero);
+        
         return precioAlquiler;
     }
 
