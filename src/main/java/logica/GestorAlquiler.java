@@ -26,6 +26,7 @@ public class GestorAlquiler {
     public void finalizarAlquiler(Alquiler alquiler, double puntuacion) {
         alquiler.finalizar(puntuacion);
         PersistenciaAlquiler.actualizarAlquiler(alquiler);
+
     }
 
 
