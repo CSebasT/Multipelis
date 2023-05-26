@@ -97,7 +97,7 @@ public class Alquiler {
         double precioAlquiler = ejemplar.getCostoPorDia() * dias;
         int puntosPorFidelidad;
 
-        double temp = obtenerDescuentoFidelidad();
+        double temp = cliente.obtenerDescuentoFidelidad();
         precioAlquiler = precioAlquiler * (1 - temp);
 
         temp = 0;
@@ -109,23 +109,6 @@ public class Alquiler {
         }
         precioAlquiler = precioAlquiler * (1 - temp);
         return precioAlquiler;
-    }
-
-    private double obtenerDescuentoFidelidad() {
-        int puntosPorFidelidad;
-        double temp = 0;
-        puntosPorFidelidad = cliente.getPuntosPorFidelidad();
-        if (puntosPorFidelidad == 25) {
-            temp = 0.25;
-        } else if (puntosPorFidelidad == 50) {
-            temp = 0.5;
-        } else if (puntosPorFidelidad == 75) {
-            temp = 0.75;
-        } else if (puntosPorFidelidad == 100) {
-            temp = 1;
-            cliente.setPuntosPorFidelidad(0);
-        }
-        return temp;
     }
 
 }

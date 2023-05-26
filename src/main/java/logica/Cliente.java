@@ -22,9 +22,7 @@ public class Cliente {
     private int puntosPorFidelidad;
 
 
-    public void registrarCliente(){
 
-    }
 
     public String getCedula() {
         return cedula;
@@ -83,4 +81,23 @@ public class Cliente {
     public void aumentarPuntos() {
         puntosPorFidelidad = 5 + puntosPorFidelidad;
     }
+
+    public double obtenerDescuentoFidelidad() {
+        int puntosPorFidelidad;
+        double temp = 0;
+        puntosPorFidelidad = getPuntosPorFidelidad();
+        if (puntosPorFidelidad == 25) {
+            temp = 0.25;
+        } else if (puntosPorFidelidad == 50) {
+            temp = 0.5;
+        } else if (puntosPorFidelidad == 75) {
+            temp = 0.75;
+        } else if (puntosPorFidelidad == 100) {
+            temp = 1;
+            setPuntosPorFidelidad(0);
+        }
+        return temp;
+    }
+
 }
+
