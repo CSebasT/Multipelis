@@ -13,6 +13,9 @@ public class Pelicula {
     @Column(name = "codigo", nullable = false, length = 10)
     private String codigo;
     @OneToOne()
+    @JoinColumn(name = "puntaje")
+    private Puntaje puntaje;
+    @OneToOne()
     @JoinColumn(name = "genero")
     private Genero genero;
     @Column(name = "titulo", nullable = false, length = 100)
@@ -26,10 +29,7 @@ public class Pelicula {
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
 
-    @Column(name = "puntajeTotal", nullable = false)
-    private double puntajeTotal;
-    @Column(name = "cantidadDePuntajes", nullable = false)
-    private int cantidadDePuntajes;
+
     public String getCodigo() {
         return codigo;
     }
@@ -87,24 +87,9 @@ public class Pelicula {
         this.ejemplares = ejemplares;
     }
 
-    public double getPuntajeTotal() {
-        return puntajeTotal;
-    }
-
-    public void setPuntajeTotal(double puntajeTotal) {
-        this.puntajeTotal = puntajeTotal;
-    }
-
-    public int getCantidadDePuntajes() {
-        return cantidadDePuntajes;
-    }
-
-    public void setCantidadDePuntajes(int cantidadDePuntajes) {
-        this.cantidadDePuntajes = cantidadDePuntajes;
-    }
 
     public void agregaPuntaje(double nuevoPuntaje) {
-        puntajeTotal = (puntajeTotal*cantidadDePuntajes+nuevoPuntaje)/cantidadDePuntajes+1;
+        puntaje.agregaPuntaje(nuevoPuntaje);
     }
 
     public double obtenerDescuentoGenero() {
