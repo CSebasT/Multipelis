@@ -1,6 +1,8 @@
 package logica;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "cliente")
@@ -83,20 +85,21 @@ public class Cliente {
     }
 
     public double obtenerDescuentoFidelidad() {
-        int puntosPorFidelidad;
-        double temp = 0;
-        puntosPorFidelidad = getPuntosPorFidelidad();
-        if (puntosPorFidelidad == 25) {
-            temp = 0.25;
-        } else if (puntosPorFidelidad == 50) {
-            temp = 0.5;
-        } else if (puntosPorFidelidad == 75) {
-            temp = 0.75;
-        } else if (puntosPorFidelidad == 100) {
-            temp = 1;
-            setPuntosPorFidelidad(0);
+        double descuento = 0;
+
+        Map<Integer, Double> descuentos = new HashMap<>();
+        descuentos.put(25, 0.25);
+        descuentos.put(50, 0.5);
+        descuentos.put(75, 0.75);
+        descuentos.put(100, 1.0);
+
+        if (descuentos.containsKey(puntosPorFidelidad)) {
+            descuento = descuentos.get(puntosPorFidelidad);
+            if (puntosPorFidelidad == 100) {
+                puntosPorFidelidad = 0;
+            }
         }
-        return temp;
+        return descuento;
     }
 
 }
