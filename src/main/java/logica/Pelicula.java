@@ -12,6 +12,9 @@ public class Pelicula {
     @Id
     @Column(name = "codigo", nullable = false, length = 10)
     private String codigo;
+    @OneToOne()
+    @JoinColumn(name = "genero")
+    private Genero genero;
     @Column(name = "titulo", nullable = false, length = 100)
     private String titulo;
     @Column(name = "duracion", nullable = false)
@@ -20,15 +23,11 @@ public class Pelicula {
     private int añoLanzamiento;
     @Column(name = "sinopsis", nullable = false, length = 150)
     private String sinopsis;
-    @Column(name = "genero", nullable = false, length = 50)
-    private String genero;
+
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
-    @Column(name = "fechaDescuento", nullable = false, length = 50)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Calendar fechaDescuento;
-    @Column(name = "descuentoPorGenero", nullable = false)
-    private double descuentoPorGenero;
+
+
     @Column(name = "puntajeTotal", nullable = false)
     private double puntajeTotal;
     @Column(name = "cantidadDePuntajes", nullable = false)
@@ -62,6 +61,14 @@ public class Pelicula {
         return añoLanzamiento;
     }
 
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
     public void setAñoLanzamiento(int añoLanzamiento) {
         this.añoLanzamiento = añoLanzamiento;
     }
@@ -74,13 +81,6 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
     public List<Ejemplar> getEjemplares() {
         return ejemplares;
@@ -88,22 +88,6 @@ public class Pelicula {
 
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
-    }
-
-    public Calendar getFechaDescuento() {
-        return fechaDescuento;
-    }
-
-    public void setFechaDescuento(Calendar fechaDescuento) {
-        this.fechaDescuento = fechaDescuento;
-    }
-
-    public double getDescuentoPorGenero() {
-        return descuentoPorGenero;
-    }
-
-    public void setDescuentoPorGenero(double descuentoPorGenero) {
-        this.descuentoPorGenero = descuentoPorGenero;
     }
 
     public double getPuntajeTotal() {
