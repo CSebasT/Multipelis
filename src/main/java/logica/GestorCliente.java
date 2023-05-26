@@ -16,6 +16,7 @@ public class GestorCliente {
         cliente.setTelefono(telefono);
         cliente.setCorreo(correo);
 
+
         PersistenciaCliente.registrarCliente(cedula, cliente);
     }
 

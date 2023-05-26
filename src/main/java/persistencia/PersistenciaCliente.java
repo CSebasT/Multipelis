@@ -2,7 +2,6 @@ package persistencia;
 
 import logica.Cliente;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 public class PersistenciaCliente {
@@ -18,8 +17,7 @@ public class PersistenciaCliente {
     }
 
     public static void registrarCliente(String cedula, Cliente cliente) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         if(PersistenciaCliente.verificarExistenciaCliente(session, cedula)){
             //System.out.println("Si existe");
@@ -28,13 +26,14 @@ public class PersistenciaCliente {
         }
         session.save(cliente);
         session.getTransaction().commit();
+        session.close();
     }
 
     public static Cliente consultarCliente(String cedula) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Cliente cliente = session.get(Cliente.class, cedula);
+        session.close();
         return cliente;
     }
 }
