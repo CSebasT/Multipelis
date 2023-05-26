@@ -89,4 +89,8 @@ public class Ejemplar {
         estadoDisponibilidad = false;
         numeroDeUsos = numeroDeUsos + 1;
     }
+
+    public double obtenerDescuentoGenero() {
+        return pelicula.obtenerDescuentoGenero();
+    }
 }

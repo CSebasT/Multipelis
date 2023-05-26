@@ -23,16 +23,13 @@ public class Pelicula {
     private int añoLanzamiento;
     @Column(name = "sinopsis", nullable = false, length = 150)
     private String sinopsis;
-
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
-
 
     @Column(name = "puntajeTotal", nullable = false)
     private double puntajeTotal;
     @Column(name = "cantidadDePuntajes", nullable = false)
     private int cantidadDePuntajes;
-
     public String getCodigo() {
         return codigo;
     }
@@ -108,5 +105,9 @@ public class Pelicula {
 
     public void agregaPuntaje(double nuevoPuntaje) {
         puntajeTotal = (puntajeTotal*cantidadDePuntajes+nuevoPuntaje)/cantidadDePuntajes+1;
+    }
+
+    public double obtenerDescuentoGenero() {
+        return genero.obtenerDescuentoGenero();
     }
 }

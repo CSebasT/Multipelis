@@ -98,21 +98,9 @@ public class Alquiler {
         double temp = cliente.obtenerDescuentoFidelidad();
         precioAlquiler = precioAlquiler * (1 - temp);
 
-        temp = obtenerDescuentoGenero();
+        temp = ejemplar.obtenerDescuentoGenero();
         precioAlquiler = precioAlquiler * (1 - temp);
         return precioAlquiler;
-    }
-
-    private double obtenerDescuentoGenero() {
-        double descuento = 0;
-        Calendar fechaActual = Calendar.getInstance();
-        Calendar fechaDeDescuento = ejemplar.getPelicula().getGenero().getFechaDescuento();
-
-        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH))
-                && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
-            descuento  = ejemplar.getPelicula().getGenero().getPorcentajeDescuento();
-        }
-        return descuento;
     }
 
 }
