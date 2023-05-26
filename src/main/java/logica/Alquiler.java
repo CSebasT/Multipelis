@@ -1,6 +1,7 @@
 package logica;
 
 import javax.persistence.*;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "alquiler")
@@ -29,14 +30,16 @@ public class Alquiler {
 
     }
 
-    public Alquiler(Cliente cliente, Ejemplar ejemplar, double precio) {
+    public Alquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
         this.estadoDevolucion = false;
         this.cliente = cliente;
         this.ejemplar = ejemplar;
-        this.precio = precio;
+        this.precio = calcularPrecio();
         ejemplar.alquilar();
         cliente.aumentarPuntos();
     }
+
+
 
     public Long getNumero() {
         return numero;
@@ -89,4 +92,34 @@ public class Alquiler {
         setEstadoDevolucion(true);
         ejemplar.devolver(puntaje);
     }
+
+    public double calcularPrecio() {
+        double precioAlquiler = ejemplar.getCostoPorDia() * dias;
+        int puntosPorFidelidad;
+
+        double temp = 0;
+        puntosPorFidelidad = cliente.getPuntosPorFidelidad();
+        if (puntosPorFidelidad == 25) {
+            temp = 0.25;
+        } else if (puntosPorFidelidad == 50) {
+            temp = 0.5;
+        } else if (puntosPorFidelidad == 75) {
+            temp = 0.75;
+        } else if (puntosPorFidelidad == 100) {
+            temp = 1;
+            cliente.setPuntosPorFidelidad(0);
+        }
+        precioAlquiler = precioAlquiler * (1 - temp);
+
+        temp = 0;
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaDeDescuento = ejemplar.getPelicula().getFechaDescuento();
+
+        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH)) && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
+            temp  = ejemplar.getPelicula().getDescuentoPorGenero();
+        }
+        precioAlquiler = precioAlquiler * (1 - temp);
+        return precioAlquiler;
+    }
+
 }
