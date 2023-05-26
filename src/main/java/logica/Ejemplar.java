@@ -77,12 +77,8 @@ public class Ejemplar {
 
     public void devolver(double puntaje) {
         estadoDisponibilidad = true;
-        estaDesgastado = fueUsadaCincuentaVeces();
+        estaDesgastado = numeroDeUsos>=50;
         pelicula.agregaPuntaje(puntaje);
-    }
-
-    private boolean fueUsadaCincuentaVeces() {
-        return numeroDeUsos>=50;
     }
 
     public void alquilar() {
