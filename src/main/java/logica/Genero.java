@@ -14,18 +14,6 @@ public class Genero {
     @Column(name = "porcentajeDescuento", nullable = false)
     private double porcentajeDescuento;
 
-    public double obtenerDescuentoGenero() {
-        double descuento = 0;
-        Calendar fechaActual = Calendar.getInstance();
-        Calendar fechaDeDescuento = fechaDescuento;
-
-        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH))
-                && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
-            descuento  = porcentajeDescuento;
-        }
-        return descuento;
-    }
-
     public Calendar getFechaDescuento() {
         return fechaDescuento;
     }
@@ -42,6 +30,16 @@ public class Genero {
         this.porcentajeDescuento = porcentajeDescuento;
     }
 
+    public double obtenerDescuentoGenero() {
+        double descuento = 0;
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaDeDescuento = fechaDescuento;
 
+        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH))
+                && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
+            descuento  = porcentajeDescuento;
+        }
+        return descuento;
+    }
 
 }
