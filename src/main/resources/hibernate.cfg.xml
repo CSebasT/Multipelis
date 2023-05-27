@@ -13,6 +13,8 @@
     <mapping class="logica.Ejemplar"/>
     <mapping class="logica.Alquiler"/>
     <mapping class="logica.Pelicula"/>
+    <mapping class="logica.Genero"/>
+    <mapping class="logica.Puntaje"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

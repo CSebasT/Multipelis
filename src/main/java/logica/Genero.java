@@ -11,6 +11,8 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo", nullable = false)
     private Long codigo;
+    @Column(name = "nombre", nullable = false, length = 100)
+    private String nombre;
     @Column(name = "fechaDescuento", nullable = false, length = 50)
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar fechaDescuento;
@@ -31,6 +33,14 @@ public class Genero {
 
     public void setPorcentajeDescuento(double porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public double obtenerDescuentoGenero() {
