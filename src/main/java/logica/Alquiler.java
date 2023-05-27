@@ -34,6 +34,7 @@ public class Alquiler {
         this.estadoDevolucion = false;
         this.cliente = cliente;
         this.ejemplar = ejemplar;
+        this.dias = dias;
         this.precio = calcularPrecio();
         ejemplar.alquilar();
         cliente.aumentarPuntos();
@@ -101,7 +102,7 @@ public class Alquiler {
 
         double descuentoGenero = ejemplar.obtenerDescuentoGenero();
         precioAlquiler = precioAlquiler * (1 - descuentoGenero);
-        
+
         return precioAlquiler;
     }
 

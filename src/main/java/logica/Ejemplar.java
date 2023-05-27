@@ -11,7 +11,7 @@ public class Ejemplar {
     @Column(name = "estado_disponibilidad", nullable = false)
     private Boolean estadoDisponibilidad;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codigo_pelicula")
     private Pelicula pelicula;
 

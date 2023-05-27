@@ -12,12 +12,6 @@ public class Pelicula {
     @Id
     @Column(name = "codigo", nullable = false, length = 10)
     private String codigo;
-    @OneToOne()
-    @JoinColumn(name = "puntaje")
-    private Puntaje puntaje;
-    @OneToOne()
-    @JoinColumn(name = "genero")
-    private Genero genero;
     @Column(name = "titulo", nullable = false, length = 100)
     private String titulo;
     @Column(name = "duracion", nullable = false)
@@ -26,6 +20,12 @@ public class Pelicula {
     private int añoLanzamiento;
     @Column(name = "sinopsis", nullable = false, length = 150)
     private String sinopsis;
+    @OneToOne()
+    @JoinColumn(name = "codigo_puntaje")
+    private Puntaje puntaje;
+    @OneToOne()
+    @JoinColumn(name = "codigo_genero")
+    private Genero genero;
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
 

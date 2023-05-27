@@ -1,8 +1,14 @@
 package logica;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "puntaje")
 public class Puntaje {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo", nullable = false)
+    private Long codigo;
     @Column(name = "puntajeTotal", nullable = false)
     private double puntajeTotal;
     @Column(name = "cantidadDePuntajes", nullable = false)

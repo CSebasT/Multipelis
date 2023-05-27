@@ -1,13 +1,16 @@
 package logica;
 
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
+@Entity
+@Table(name = "genero")
 public class Genero {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo", nullable = false)
+    private Long codigo;
     @Column(name = "fechaDescuento", nullable = false, length = 50)
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar fechaDescuento;
@@ -34,7 +37,6 @@ public class Genero {
         double descuento = 0;
         Calendar fechaActual = Calendar.getInstance();
         Calendar fechaDeDescuento = fechaDescuento;
-
         if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH))
                 && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
             descuento  = porcentajeDescuento;
