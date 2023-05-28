@@ -2,8 +2,6 @@ package logica;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -29,6 +27,20 @@ public class Pelicula {
     @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
     private List<Ejemplar> ejemplares = new ArrayList<>();
 
+    public Pelicula() {
+    }
+
+    public void agregarPuntaje(double nuevoPuntaje) {
+        puntaje.actualizar(nuevoPuntaje);
+    }
+
+    public double obtenerDescuentoGenero() {
+        return genero.obtenerDescuento();
+    }
+
+    /*-------------------------------------------------------------*/
+    /* Getters y Setters para el funcionamiento de la persistencia */
+    /*-------------------------------------------------------------*/
 
     public String getCodigo() {
         return codigo;
@@ -58,14 +70,6 @@ public class Pelicula {
         return añoLanzamiento;
     }
 
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
-
     public void setAñoLanzamiento(int añoLanzamiento) {
         this.añoLanzamiento = añoLanzamiento;
     }
@@ -78,6 +82,21 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
+    public Puntaje getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(Puntaje puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
 
     public List<Ejemplar> getEjemplares() {
         return ejemplares;
@@ -85,14 +104,5 @@ public class Pelicula {
 
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
-    }
-
-
-    public void agregaPuntaje(double nuevoPuntaje) {
-        puntaje.agregaPuntaje(nuevoPuntaje);
-    }
-
-    public double obtenerDescuentoGenero() {
-        return genero.obtenerDescuentoGenero();
     }
 }

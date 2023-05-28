@@ -33,6 +33,16 @@
                 Campo Vacio o Erroneo, ingresa nuevamente
             </div>
         </div>
+        <div class="mb-3">
+            <label for="numeroDias" class="form-label">Número de días de alquiler</label>
+            <input type="number" class="form-control" name="numeroDias" id="numeroDias" placeholder="Días" required>
+            <div class="valid-feedback">
+                Completo
+            </div>
+            <div class="invalid-feedback">
+                Campo Vacio o Erroneo, ingresa nuevamente
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Alquilar</button>
     </form>
 </div>

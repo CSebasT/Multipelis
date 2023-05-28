@@ -14,6 +14,24 @@ public class Puntaje {
     @Column(name = "cantidadDePuntajes", nullable = false)
     private int cantidadDePuntajes;
 
+    public Puntaje() {
+    }
+
+    public void actualizar(double nuevoPuntaje) {
+        puntajeTotal = (puntajeTotal*cantidadDePuntajes+nuevoPuntaje)/(cantidadDePuntajes+1);
+    }
+
+    /*-------------------------------------------------------------*/
+    /* Getters y Setters para el funcionamiento de la persistencia */
+    /*-------------------------------------------------------------*/
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
 
     public double getPuntajeTotal() {
         return puntajeTotal;
@@ -29,8 +47,5 @@ public class Puntaje {
 
     public void setCantidadDePuntajes(int cantidadDePuntajes) {
         this.cantidadDePuntajes = cantidadDePuntajes;
-    }
-    public void agregaPuntaje(double nuevoPuntaje) {
-        puntajeTotal = (puntajeTotal*cantidadDePuntajes+nuevoPuntaje)/cantidadDePuntajes+1;
     }
 }

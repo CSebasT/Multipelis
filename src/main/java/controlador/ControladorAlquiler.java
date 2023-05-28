@@ -30,8 +30,9 @@ public class ControladorAlquiler extends HttpServlet {
     private void devolverAlquiler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String numero = request.getParameter("numeroAlquiler");
         Alquiler alquiler = gestorAlquiler.buscarAlquiler(Long.parseLong(numero));
-        gestorAlquiler.finalizarAlquiler(alquiler,4);
+        gestorAlquiler.finalizarAlquiler(alquiler,Integer.parseInt(request.getParameter("puntaje")));
         request.setAttribute("pelicula",alquiler.getEjemplar().getPelicula());
+        request.setAttribute("ejemplar",alquiler.getEjemplar());
         request.setAttribute("cliente",alquiler.getCliente());
         request.getRequestDispatcher("/devolucionInfo.jsp").forward(request, response);
     }
@@ -42,7 +43,7 @@ public class ControladorAlquiler extends HttpServlet {
         Cliente cliente = gestorCliente.buscarCliente(request.getParameter("cedulaCliente"));
         request.setAttribute("cliente",cliente);
         request.setAttribute("pelicula", pelicula);
-        Alquiler alquiler = gestorAlquiler.registrarAlquiler(cliente,ejemplar,1);
+        Alquiler alquiler = gestorAlquiler.registrarAlquiler(cliente,ejemplar,Integer.parseInt(request.getParameter("numeroDias")));
         request.setAttribute("alquiler", alquiler);
         request.getRequestDispatcher("/alquilerInfo.jsp").forward(request, response);
     }

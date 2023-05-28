@@ -10,11 +10,9 @@ public class Ejemplar {
     private String codigo;
     @Column(name = "estado_disponibilidad", nullable = false)
     private Boolean estadoDisponibilidad;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codigo_pelicula")
     private Pelicula pelicula;
-
     @Column(name = "costoPorDia", nullable = false)
     private double costoPorDia;
     @Column(name = "numeroDeUsos", nullable = false)
@@ -22,10 +20,32 @@ public class Ejemplar {
     @Column(name = "estaDesgastado", nullable = false)
     private boolean estaDesgastado;
 
-
     public Ejemplar(){
 
     }
+
+    public double getCostoPorDia() {
+        return costoPorDia;
+    }
+
+    public void devolver(double puntaje) {
+        estadoDisponibilidad = true;
+        estaDesgastado = numeroDeUsos>=50;
+        pelicula.agregarPuntaje(puntaje);
+    }
+
+    public void alquilar() {
+        estadoDisponibilidad = false;
+        numeroDeUsos = numeroDeUsos + 1;
+    }
+
+    public double obtenerDescuentoGenero() {
+        return pelicula.obtenerDescuentoGenero();
+    }
+
+    /*-------------------------------------------------------------*/
+    /* Getters y Setters para el funcionamiento de la persistencia */
+    /*-------------------------------------------------------------*/
 
     public String getCodigo() {
         return codigo;
@@ -51,10 +71,6 @@ public class Ejemplar {
         this.pelicula = pelicula;
     }
 
-    public double getCostoPorDia() {
-        return costoPorDia;
-    }
-
     public void setCostoPorDia(double costoPorDia) {
         this.costoPorDia = costoPorDia;
     }
@@ -73,20 +89,5 @@ public class Ejemplar {
 
     public void setEstaDesgastado(boolean estaDesgastado) {
         this.estaDesgastado = estaDesgastado;
-    }
-
-    public void devolver(double puntaje) {
-        estadoDisponibilidad = true;
-        estaDesgastado = numeroDeUsos>=50;
-        pelicula.agregaPuntaje(puntaje);
-    }
-
-    public void alquilar() {
-        estadoDisponibilidad = false;
-        numeroDeUsos = numeroDeUsos + 1;
-    }
-
-    public double obtenerDescuentoGenero() {
-        return pelicula.obtenerDescuentoGenero();
     }
 }

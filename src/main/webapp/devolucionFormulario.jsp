@@ -21,6 +21,16 @@
                 Campo Vacio o Erroneo, ingresa nuevamente
             </div>
         </div>
+        <div class="mb-3">
+            <label for="puntaje" class="form-label">Puntaje de la Pelicula </label>
+            <input type="number" class="form-control" name="puntaje" id="puntaje" placeholder="Numero">
+            <div class="valid-feedback">
+                Completo
+            </div>
+            <div class="invalid-feedback">
+                Campo Vacio o Erroneo, ingresa nuevamente
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Devolver</button>
     </form>
 </div>

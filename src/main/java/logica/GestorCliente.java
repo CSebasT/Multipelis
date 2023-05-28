@@ -8,15 +8,7 @@ import persistencia.*;
 public class GestorCliente {
 
     public  void registrarCliente(String cedula, String nombre, String apellido, String correo, String direccion, String telefono) {
-        Cliente cliente = new Cliente();
-        cliente.setCedula(cedula);
-        cliente.setNombre(nombre);
-        cliente.setApellido(apellido);
-        cliente.setDireccion(direccion);
-        cliente.setTelefono(telefono);
-        cliente.setCorreo(correo);
-
-
+        Cliente cliente = new Cliente(cedula, nombre, apellido, direccion, telefono, correo);
         PersistenciaCliente.registrarCliente(cedula, cliente);
     }
 

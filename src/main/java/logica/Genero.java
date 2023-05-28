@@ -2,7 +2,6 @@ package logica;
 
 import javax.persistence.*;
 import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 @Table(name = "genero")
@@ -19,6 +18,40 @@ public class Genero {
     @Column(name = "porcentajeDescuento", nullable = false)
     private double porcentajeDescuento;
 
+    public Genero() {
+    }
+
+    public double obtenerDescuento() {
+        double descuento = 0;
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaDeDescuento = fechaDescuento;
+        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH))
+                && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
+            descuento  = porcentajeDescuento;
+        }
+        return descuento;
+    }
+
+    /*-------------------------------------------------------------*/
+    /* Getters y Setters para el funcionamiento de la persistencia */
+    /*-------------------------------------------------------------*/
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Calendar getFechaDescuento() {
         return fechaDescuento;
     }
@@ -34,24 +67,4 @@ public class Genero {
     public void setPorcentajeDescuento(double porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public double obtenerDescuentoGenero() {
-        double descuento = 0;
-        Calendar fechaActual = Calendar.getInstance();
-        Calendar fechaDeDescuento = fechaDescuento;
-        if ((fechaActual.get(Calendar.DAY_OF_MONTH) == fechaDeDescuento.get(Calendar.DAY_OF_MONTH))
-                && (fechaActual.get(Calendar.MONTH) == fechaDeDescuento.get(Calendar.MONTH))) {
-            descuento  = porcentajeDescuento;
-        }
-        return descuento;
-    }
-
 }

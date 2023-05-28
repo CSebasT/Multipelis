@@ -15,19 +15,15 @@ public class Alquiler {
     @OneToOne()
     @JoinColumn(name = "cedula_cliente")
     private Cliente cliente;
-
     @OneToOne()
     @JoinColumn(name = "codigo_ejemplar")
     private Ejemplar ejemplar;
-
     @Column(name = "dias", nullable = false)
     private int dias;
-
     @Column(name = "precio", nullable = false)
     private double precio;
 
-    public Alquiler(){
-
+    public Alquiler() {
     }
 
     public Alquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
@@ -40,8 +36,26 @@ public class Alquiler {
         cliente.aumentarPuntos();
     }
 
+    public void finalizar(double puntaje) {
+        estadoDevolucion = true;
+        ejemplar.devolver(puntaje);
+    }
 
+    public double calcularPrecio() {
+        double precioAlquiler = ejemplar.getCostoPorDia() * dias;
 
+        double descuentoFidelidad = cliente.obtenerDescuentoFidelidad();
+        precioAlquiler = precioAlquiler * (1 - descuentoFidelidad);
+
+        double descuentoGenero = ejemplar.obtenerDescuentoGenero();
+        precioAlquiler = precioAlquiler * (1 - descuentoGenero);
+
+        return precioAlquiler;
+    }
+
+    /*-------------------------------------------------------------*/
+    /* Getters y Setters para el funcionamiento de la persistencia */
+    /*-------------------------------------------------------------*/
     public Long getNumero() {
         return numero;
     }
@@ -57,6 +71,7 @@ public class Alquiler {
     public void setEstadoDevolucion(Boolean estadoDevolucion) {
         this.estadoDevolucion = estadoDevolucion;
     }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -88,22 +103,4 @@ public class Alquiler {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
-    public void finalizar(double puntaje) {
-        setEstadoDevolucion(true);
-        ejemplar.devolver(puntaje);
-    }
-
-    public double calcularPrecio() {
-        double precioAlquiler = ejemplar.getCostoPorDia() * dias;
-
-        double descuentoFidelidad = cliente.obtenerDescuentoFidelidad();
-        precioAlquiler = precioAlquiler * (1 - descuentoFidelidad);
-
-        double descuentoGenero = ejemplar.obtenerDescuentoGenero();
-        precioAlquiler = precioAlquiler * (1 - descuentoGenero);
-
-        return precioAlquiler;
-    }
-
 }

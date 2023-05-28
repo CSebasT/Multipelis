@@ -16,6 +16,7 @@
         <thead>
         <tr>
             <th scope="col">Título</th>
+            <th scope="col">Puntaje</th>
             <th scope="col">Cliente</th>
         </tr>
         </thead>
@@ -23,6 +24,7 @@
         <tr>
             <c:set var="p1" value="${requestScope['pelicula']}"/>
             <th scope="row">${p1.titulo}</th>
+            <th scope="row">${p1.puntaje.puntajeTotal}</th>
             <c:set var="c1" value="${requestScope['cliente']}"/>
             <th scope="row">${c1.nombre} ${c1.apellido}</th>
         </tr>

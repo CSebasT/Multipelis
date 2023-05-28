@@ -18,12 +18,14 @@
         <thead>
         <tr>
             <th scope="col">Nro</th>
+            <th scope="col">Cantidad de días</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <c:set var="a1" value="${requestScope['alquiler']}"/>
             <th scope="row">${a1.numero}</th>
+            <th scope="row">${a1.dias}</th>
         </tr>
         </tbody>
     </table>
@@ -37,6 +39,7 @@
             <th scope="col">Año</th>
             <th scope="col">Sinopsis</th>
             <th scope="col">Genero</th>
+            <th scope="col">Puntaje</th>
         </tr>
         </thead>
         <tbody>
@@ -46,7 +49,8 @@
             <th scope="row">${p1.duracion}</th>
             <th scope="row">${p1.añoLanzamiento}</th>
             <th scope="row">${p1.sinopsis}</th>
-            <th scope="row">${p1.genero}</th>
+            <th scope="row">${p1.genero.nombre}</th>
+            <th scope="row">${p1.puntaje.puntajeTotal}</th>
         </tr>
         </tbody>
     </table>

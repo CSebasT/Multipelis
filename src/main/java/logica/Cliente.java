@@ -23,8 +23,44 @@ public class Cliente {
     @Column(name = "puntosPorFidelidad", nullable = true)
     private int puntosPorFidelidad;
 
+    public Cliente() {
+    }
 
+    public Cliente(String cedula, String nombre, String apellido, String direccion, String telefono, String correo) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.puntosPorFidelidad = 0;
+    }
 
+    public void aumentarPuntos() {
+        puntosPorFidelidad = 5 + puntosPorFidelidad;
+    }
+
+    public double obtenerDescuentoFidelidad() {
+        double descuento = 0;
+
+        Map<Integer, Double> descuentos = new HashMap<>();
+        descuentos.put(25, 0.25);
+        descuentos.put(50, 0.5);
+        descuentos.put(75, 0.75);
+        descuentos.put(100, 1.0);
+
+        if (descuentos.containsKey(puntosPorFidelidad)) {
+            descuento = descuentos.get(puntosPorFidelidad);
+            if (puntosPorFidelidad == 100) {
+                puntosPorFidelidad = 0;
+            }
+        }
+        return descuento;
+    }
+
+    /*-------------------------------------------------------------*/
+    /* Getters y Setters para el funcionamiento de la persistencia */
+    /*-------------------------------------------------------------*/
 
     public String getCedula() {
         return cedula;
@@ -33,12 +69,15 @@ public class Cliente {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getApellido() {
         return apellido;
     }
@@ -78,29 +117,5 @@ public class Cliente {
     public void setPuntosPorFidelidad(int puntosPorFidelidad) {
         this.puntosPorFidelidad = puntosPorFidelidad;
     }
-
-
-    public void aumentarPuntos() {
-        puntosPorFidelidad = 5 + puntosPorFidelidad;
-    }
-
-    public double obtenerDescuentoFidelidad() {
-        double descuento = 0;
-
-        Map<Integer, Double> descuentos = new HashMap<>();
-        descuentos.put(25, 0.25);
-        descuentos.put(50, 0.5);
-        descuentos.put(75, 0.75);
-        descuentos.put(100, 1.0);
-
-        if (descuentos.containsKey(puntosPorFidelidad)) {
-            descuento = descuentos.get(puntosPorFidelidad);
-            if (puntosPorFidelidad == 100) {
-                puntosPorFidelidad = 0;
-            }
-        }
-        return descuento;
-    }
-
 }
 
