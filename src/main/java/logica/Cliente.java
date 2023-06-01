@@ -20,6 +20,9 @@ public class Cliente {
     private String direccion;
     @Column(name = "telefono", nullable = true, length = 10)
     private String telefono;
+    @Column(name = "fechaDescuento", nullable = false, length = 50)
+    @Temporal(TemporalType.TIMESTAMP)
+    private String fechaNacimiento;
     @Column(name = "puntosPorFidelidad", nullable = true)
     private int puntosPorFidelidad;
 
