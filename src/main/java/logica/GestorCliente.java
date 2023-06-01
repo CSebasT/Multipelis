@@ -14,6 +14,7 @@ public class GestorCliente {
     public int calcularDigitoVerificador(String cedula) {
         if (cedula.equals("0987654321")){
             return 1;
+            //Ref
         }
         return 0;
     }

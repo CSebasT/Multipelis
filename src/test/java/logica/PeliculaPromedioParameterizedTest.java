@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-
+//David
 @RunWith(value = Parameterized.class)
 public class PeliculaPromedioParameterizedTest {
     private Long codigoGenero;
@@ -22,7 +22,7 @@ public class PeliculaPromedioParameterizedTest {
     public static Iterable<Object[]> parameters(){
         List<Object[]> objects = new ArrayList<Object[]>();
         objects.add(new Object[]{"0001",0});
-        objects.add(new Object[]{"0002",0});
+        objects.add(new Object[]{"0002",0});//Ref
         //objects.add(new Object[]{"No existe",0});
         return objects;
     }

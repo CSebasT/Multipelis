@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+//Isma
 public class ClientePuntosTest {
     private Cliente cliente = null;
 
