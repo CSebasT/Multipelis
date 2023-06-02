@@ -7,16 +7,17 @@ public class GestorPelicula {
 
     public double obtenerPuntajePromedioGenero(Long codigoGenero){
         List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas(codigoGenero);
-        int promedio = 0;
-        int cantidad = 0;
+        double puntaje = 0;
+        double promedio = 0;
+        double numeroElementos = 0;
         for(Pelicula pelicula : peliculas){
             if(pelicula.getGenero().getCodigo() == codigoGenero){
-                promedio += pelicula.getPuntaje().getPuntajeTotal();
-                cantidad++;
+                puntaje += pelicula.getPuntaje().getPuntajeTotal();
+                numeroElementos++;
             }
         }
-
-        return 0;
+        promedio = (puntaje/numeroElementos);
+        return promedio;
     }
 
     public int contarPeliculasGenero(Long codigoGenero){
