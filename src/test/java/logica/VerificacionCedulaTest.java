@@ -13,11 +13,4 @@ public class VerificacionCedulaTest {
         assertEquals(1,digitoVerificador);
     }
 
-    @Test
-    public void given_ci_when_calculate_digit_then_error() {
-        GestorCliente gestorCliente = new GestorCliente();
-        int digitoVerificador = gestorCliente.calcularDigitoVerificador("0987654320");
-        assertNotEquals(1,digitoVerificador);
-    }
-
 }

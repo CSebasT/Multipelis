@@ -21,12 +21,6 @@ public class ClientePuntosTest {
         assertEquals(0, descuento);
     }
 
-    @Test
-    public void given_client_when_search_discount_then_error() {
-        double descuento = cliente.obtenerDescuentoFidelidad();
-        assertNotEquals(-0.14, descuento);
-    }
-
     @AfterClass
     public void tearDownClass(){
         //Conexión

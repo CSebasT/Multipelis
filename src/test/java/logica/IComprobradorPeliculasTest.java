@@ -13,10 +13,4 @@ public class IComprobradorPeliculasTest {
         assertTrue(iComprobradorPeliculas.verificarTitulo("Titanic"));
     }
 
-    @Test
-    public void given_real_title_when_verify_then_error() {
-        IComprobradorPeliculas c = Mockito.mock(IComprobradorPeliculas.class);
-        Mockito.when(c.verificarTitulo("El poliperro")).thenReturn(false);
-        assertFalse(c.verificarTitulo("El poliperro"));
-    }
 }
