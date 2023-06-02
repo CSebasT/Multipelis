@@ -105,4 +105,6 @@ public class Pelicula {
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
     }
+
+
 }

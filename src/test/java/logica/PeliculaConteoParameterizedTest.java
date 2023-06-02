@@ -17,8 +17,8 @@ public class PeliculaConteoParameterizedTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
         List<Object[]> objects = new ArrayList<Object[]>();
-        objects.add(new Object[]{"0002",1});
-        objects.add(new Object[]{"0001",1});
+        objects.add(new Object[]{2L,1});
+        objects.add(new Object[]{1L,2});
         return objects;
     }
 

@@ -21,7 +21,7 @@ public class PeliculaPromedioParameterizedTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
         List<Object[]> objects = new ArrayList<Object[]>();
-        objects.add(new Object[]{"0001",0});
+        objects.add(new Object[]{1L,4});
         objects.add(new Object[]{"0002",0});//Ref
         //objects.add(new Object[]{"No existe",0});
         return objects;
