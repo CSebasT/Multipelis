@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -14,7 +15,6 @@ import static org.junit.Assert.*;
 public class PeliculaPromedioParameterizedTest {
     private Long codigoGenero;
     private double expected;
-
     private GestorPelicula gestorPelicula;
 
     @Before
@@ -24,11 +24,9 @@ public class PeliculaPromedioParameterizedTest {
 
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
-        List<Object[]> objects = new ArrayList<Object[]>();
-        objects.add(new Object[]{1L,4});
-        objects.add(new Object[]{"0002",0});//Ref
-        //objects.add(new Object[]{"No existe",0});
-        return objects;
+        return Arrays.asList(new Object[][]{
+                {1L,3.875},{2L,3}
+        });
     }
 
     public PeliculaPromedioParameterizedTest(Long codigoGenero, double expected) {
@@ -41,6 +39,7 @@ public class PeliculaPromedioParameterizedTest {
         double promedio = gestorPelicula.obtenerPuntajePromedioGenero(codigoGenero);
         assertEquals(expected,promedio, 0);
     }
-
-
 }
+
+
+

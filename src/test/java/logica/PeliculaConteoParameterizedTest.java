@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -23,10 +24,9 @@ public class PeliculaConteoParameterizedTest {
 
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
-        List<Object[]> objects = new ArrayList<Object[]>();
-        objects.add(new Object[]{2L,1});
-        objects.add(new Object[]{1L,2});
-        return objects;
+        return Arrays.asList(new Object[][]{
+                {2L,1},{1L,2}
+        });
     }
 
     public PeliculaConteoParameterizedTest(Long codigoGenero, int expected) {
