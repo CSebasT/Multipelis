@@ -26,7 +26,7 @@ public class Alquiler {
     public Alquiler() {
     }
 
-    public Alquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
+    public Alquiler(Cliente cliente, Ejemplar ejemplar, int dias) throws Exception {
         this.estadoDevolucion = false;
         this.cliente = cliente;
         this.ejemplar = ejemplar;
@@ -41,7 +41,7 @@ public class Alquiler {
         ejemplar.devolver(puntaje);
     }
 
-    public double calcularPrecio() {
+    public double calcularPrecio() throws Exception {
         double precioAlquiler = ejemplar.getCostoPorDia() * dias;
 
         double descuentoFidelidad = cliente.obtenerDescuentoFidelidad();
@@ -50,6 +50,9 @@ public class Alquiler {
         double descuentoGenero = ejemplar.obtenerDescuentoGenero();
         precioAlquiler = precioAlquiler * (1 - descuentoGenero);
 
+        if (precioAlquiler<0){
+            throw new RuntimeException();
+        }
         return precioAlquiler;
     }
 

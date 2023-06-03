@@ -1,5 +1,6 @@
 package logica;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,10 +14,13 @@ import static org.junit.Assert.*;
 public class PeliculaPromedioParameterizedTest {
     private Long codigoGenero;
     private double expected;
-    private List<Pelicula> peliculas;
 
-    //@Before antes de cada metodo
-    //@BeforeClass antes de ejecutar la clase (para abrir conexión con base de datos)
+    private GestorPelicula gestorPelicula;
+
+    @Before
+    public void setUp(){
+        gestorPelicula = new GestorPelicula();
+    }
 
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
@@ -34,7 +38,6 @@ public class PeliculaPromedioParameterizedTest {
 
     @Test
     public void given_genre_when_points_average_then_ok() {
-        GestorPelicula gestorPelicula = new GestorPelicula();
         double promedio = gestorPelicula.obtenerPuntajePromedioGenero(codigoGenero);
         assertEquals(expected,promedio, 0);
     }

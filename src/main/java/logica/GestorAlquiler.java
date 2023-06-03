@@ -12,7 +12,7 @@ public class GestorAlquiler {
 
     }
 
-    public Alquiler registrarAlquiler(Cliente cliente, Ejemplar ejemplar, int dias) {
+    public Alquiler registrarAlquiler(Cliente cliente, Ejemplar ejemplar, int dias) throws Exception {
 
         Alquiler alquiler = new Alquiler(cliente, ejemplar, dias);
         PersistenciaAlquiler.registrarAlquiler(alquiler);

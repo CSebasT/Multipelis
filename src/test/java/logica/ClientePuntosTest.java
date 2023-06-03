@@ -1,16 +1,17 @@
 package logica;
 
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 //Isma
 public class ClientePuntosTest {
-    private Cliente cliente = null;
+    private static Cliente cliente = null;
 
     @BeforeClass
-    public void setUpClass(){
+    public static void setUpClass(){
         //Conexion
         //this.cliente = ;
     }
@@ -21,9 +22,5 @@ public class ClientePuntosTest {
         assertEquals(0, descuento);
     }
 
-    @AfterClass
-    public void tearDownClass(){
-        //Conexión
-    }
 
 }

@@ -24,7 +24,7 @@ public class Pelicula {
     @OneToOne()
     @JoinColumn(name = "codigo_genero")
     private Genero genero;
-    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Ejemplar> ejemplares = new ArrayList<>();
 
     public Pelicula() {
@@ -36,6 +36,15 @@ public class Pelicula {
 
     public double obtenerDescuentoGenero() {
         return genero.obtenerDescuento();
+    }
+
+    public boolean verificarNecesidadDeEjemplares(){
+        for (Ejemplar ejemplar: ejemplares){
+            if (!ejemplar.isEstaDesgastado()){
+                return false;
+            }
+        }
+        return true;
     }
 
     /*-------------------------------------------------------------*/

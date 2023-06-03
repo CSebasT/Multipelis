@@ -1,5 +1,6 @@
 package logica;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,6 +14,12 @@ import static org.junit.Assert.assertEquals;
 public class PeliculaConteoParameterizedTest {
     private Long codigoGenero;
     private int expected;
+    private GestorPelicula gestorPelicula;
+
+    @Before
+    public void setUp(){
+        gestorPelicula = new GestorPelicula();
+    }
 
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
@@ -29,7 +36,6 @@ public class PeliculaConteoParameterizedTest {
 
     @Test
     public void given_genre_when_points_average_then_ok() {
-        GestorPelicula gestorPelicula = new GestorPelicula();
         int cantidadActual = gestorPelicula.contarPeliculasGenero(codigoGenero);
         assertEquals(expected,cantidadActual);
     }

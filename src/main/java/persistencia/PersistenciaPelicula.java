@@ -1,5 +1,6 @@
 package persistencia;
 
+import logica.Cliente;
 import logica.Pelicula;
 
 import java.util.List;
@@ -17,5 +18,13 @@ public class PersistenciaPelicula {
         session.getTransaction().commit();
         session.close();
         return peliculas;
+    }
+
+    public static Pelicula consultarPelicula(String codigoPelicula) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Pelicula pelicula = session.get(Pelicula.class, codigoPelicula);
+        session.close();
+        return pelicula;
     }
 }
