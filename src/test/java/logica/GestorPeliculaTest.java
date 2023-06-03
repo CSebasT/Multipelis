@@ -5,6 +5,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
 //Cesar
 public class GestorPeliculaTest {
     private static GestorPelicula gestorPelicula = null;
@@ -26,4 +28,9 @@ public class GestorPeliculaTest {
         assertEquals(100,duracion);
     }
 
+    @Test
+    public void given_title_when_search_then_ok() {
+        Object objeto = gestorPelicula.buscarPelicula("Mi película");
+        assertNotNull(objeto);
+    }
 }

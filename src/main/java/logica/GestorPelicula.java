@@ -7,7 +7,7 @@ import persistencia.PersistenciaPelicula;
 public class GestorPelicula {
 
     public double obtenerPuntajePromedioGenero(Long codigoGenero){
-        List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas(codigoGenero);
+        List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas();
         double puntaje = 0;
         double promedio = 0;
         double numeroElementos = 0;
@@ -22,7 +22,7 @@ public class GestorPelicula {
     }
 
     public int contarPeliculasGenero(Long codigoGenero){
-        List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas(codigoGenero);
+        List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas();
         int contadorPeliculas = 0;
         for(Pelicula pelicula : peliculas){
             if(pelicula.getGenero().getCodigo() == codigoGenero){
@@ -49,4 +49,13 @@ public class GestorPelicula {
         return true;
     }
 
+    public Pelicula buscarPelicula(String nombrePelicula) {
+        List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas();
+        for(Pelicula pelicula: peliculas){
+            if (pelicula.getTitulo().equals(nombrePelicula)){
+                return pelicula;
+            }
+        }
+        return null;
+    }
 }

@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 public class PersistenciaPelicula {
-    public static List<Pelicula> consultarPeliculas (Long codigoGenero){
+    public static List<Pelicula> consultarPeliculas (){
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         String hql = "FROM Pelicula";
