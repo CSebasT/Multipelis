@@ -29,7 +29,7 @@ public class GestorPeliculaTest {
         assertEquals(50, duracion);
     }
 
-    @Test(timeout=6000)
+    @Test
     public void given_genre_when_get_top_3_then_ok() {
         String[] titulosPeliculasEsperadas = new String[]{"El gato con botas","¿Qué pasó ayer?", "Los Simpson: La película"};
         List<Pelicula> mejoresPeliculas = gestorPelicula.obtenerTresMejoresPeliculasGenero(3l);
@@ -39,7 +39,7 @@ public class GestorPeliculaTest {
         }
         assertArrayEquals(titulosPeliculasEsperadas,titulosMejoresPeliculas);
     }
-    @Test
+    @Test(timeout=6000)
     public void given_title_when_search_then_ok() {
         Object objeto = gestorPelicula.buscarPelicula("Mi película");
         assertNotNull(objeto);
