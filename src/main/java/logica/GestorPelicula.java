@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.Calendar;
 import java.util.List;
 import persistencia.PersistenciaPelicula;
 
@@ -40,9 +41,11 @@ public class GestorPelicula {
 
     }
 
-
     public boolean verificarAño(int año){
+        Calendar fechaActual = Calendar.getInstance();
+        if (año<=fechaActual.get(Calendar.YEAR)){
 
+        }
         return true;
     }
 
