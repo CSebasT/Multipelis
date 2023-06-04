@@ -22,6 +22,21 @@ public class GestorPelicula {
     //}
 
     //DESPUES
+    //ANTES DEL REFACTOR
+    //public double obtenerPuntajePromedioGenero(Long codigoGenero) {
+    //    double puntaje = 0;
+    //    double promedio = 0;
+    //    double numeroElementos = 0;
+    //    List<Pelicula> peliculas = obtenerPeliculasMismoGenero(codigoGenero);
+    //    for(Pelicula pelicula:peliculas){
+    //       puntaje += pelicula.getPuntaje().getPuntajeTotal();
+    //        numeroElementos++;
+    //    }
+    //    promedio = (puntaje / numeroElementos);
+    //    return promedio;
+    //}
+
+    //DESPUES DEL REFACTOR
     public double obtenerPuntajePromedioGenero(Long codigoGenero) {
         double puntaje = 0;
         double promedio = 0;
@@ -31,10 +46,8 @@ public class GestorPelicula {
             puntaje += pelicula.getPuntaje().getPuntajeTotal();
             numeroElementos++;
         }
-        promedio = (puntaje / numeroElementos);
-        return promedio;
+        return (puntaje / numeroElementos);
     }
-
 
     //ANTES
     //public int contarPeliculasGenero(Long codigoGenero) {
@@ -80,6 +93,24 @@ public class GestorPelicula {
     //}
 
     //DESPUES
+    //ANTES DEL REFACTOR INLINE TEMP
+    //public int obtenerDuracionPromedioGenero(Long codigoGenero) {
+    //    int duracionTotal = 0;
+    //    int duracionPromedio;
+    //    int numeroElementos = 0;
+    //    List<Pelicula> peliculas = obtenerPeliculasMismoGenero(codigoGenero);
+    //    for (Pelicula pelicula : peliculas) {
+    //        duracionTotal += pelicula.getDuracion();
+    //        numeroElementos++;
+    //    }
+    //    if (numeroElementos == 0) {
+    //        return 0;
+    //    }
+    //    duracionPromedio = (duracionTotal / numeroElementos);
+    //    return duracionPromedio;
+    //}
+
+    //DESPUES DEL REFACTOR
     public int obtenerDuracionPromedioGenero(Long codigoGenero) {
         int duracionTotal = 0;
         int duracionPromedio;
@@ -92,10 +123,8 @@ public class GestorPelicula {
         if (numeroElementos == 0) {
             return 0;
         }
-        duracionPromedio = (duracionTotal / numeroElementos);
-        return duracionPromedio;
+        return (duracionTotal / numeroElementos);
     }
-
 
 
 
