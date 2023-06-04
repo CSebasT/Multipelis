@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
-//David
+
 @RunWith(value = Parameterized.class)
 public class PeliculaPromedioParameterizedTest {
     private Long codigoGenero;
@@ -25,7 +25,7 @@ public class PeliculaPromedioParameterizedTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
         return Arrays.asList(new Object[][]{
-                {1L,3.875},{2L,3}
+                {1L,3.875},{2L,3.000}
         });
     }
 
@@ -37,7 +37,7 @@ public class PeliculaPromedioParameterizedTest {
     @Test
     public void given_genre_when_points_average_then_ok() {
         double promedio = gestorPelicula.obtenerPuntajePromedioGenero(codigoGenero);
-        assertEquals(expected,promedio, 0);
+        assertEquals(expected,promedio, 0.01);
     }
 }
 

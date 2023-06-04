@@ -7,7 +7,7 @@ import org.junit.Test;
 import persistencia.PersistenciaCliente;
 
 import static org.junit.Assert.*;
-//Isma
+
 public class ClientePuntosTest {
     private static Cliente cliente = null;
     private static GestorCliente gestorCliente = null;

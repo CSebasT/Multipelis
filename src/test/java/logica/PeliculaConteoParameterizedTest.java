@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-//Jhon
+
 @RunWith(value = Parameterized.class)
 public class PeliculaConteoParameterizedTest {
     private Long codigoGenero;

@@ -51,7 +51,7 @@ public class Alquiler {
         precioAlquiler = precioAlquiler * (1 - descuentoGenero);
 
         if (precioAlquiler<0){
-            throw new RuntimeException();
+            throw new Exception();
         }
         return precioAlquiler;
     }

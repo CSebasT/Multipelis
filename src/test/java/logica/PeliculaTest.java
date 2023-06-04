@@ -13,10 +13,9 @@ public class PeliculaTest {
     public static void setUpClass(){
         pelicula = PersistenciaPelicula.consultarPelicula("0001");
     }
+
     @Test
     public void given_pelicula_when_verify_replacement_then_false() {
-        boolean seNecesitaReemplazo = pelicula.verificarNecesidadDeEjemplares();
-        assertFalse(seNecesitaReemplazo);
+        assertFalse(pelicula.verificarNecesidadDeEjemplares());
     }
-
 }

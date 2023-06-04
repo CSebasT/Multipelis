@@ -12,7 +12,7 @@ public class IPaginaDePeliculasEnLineaTest {
     private IPaginaDePeliculasEnLinea iPaginaDePeliculasEnLinea = null;
 
     @Before
-    public void setUpClass(){
+    public void setUp(){
         iPaginaDePeliculasEnLinea = Mockito.mock(IPaginaDePeliculasEnLinea.class);
     }
 
@@ -25,7 +25,8 @@ public class IPaginaDePeliculasEnLineaTest {
     @Test
     public void given_title_when_get_score_then_ok() {
         Puntaje puntajeEsperado = new Puntaje(3.5, 10);
-        Mockito.when(iPaginaDePeliculasEnLinea.obtenerPuntaje("Titanic")).thenReturn(new Puntaje(3.5, 10));
+        Mockito.when(iPaginaDePeliculasEnLinea.obtenerPuntaje("Titanic")).
+                thenReturn(new Puntaje(3.5, 10));
         Puntaje puntajeObtenidoDeLaPagina = iPaginaDePeliculasEnLinea.obtenerPuntaje("Titanic");
         assertEquals(puntajeEsperado.getPuntajeTotal(), puntajeObtenidoDeLaPagina.getPuntajeTotal(), 0);
         assertEquals(puntajeEsperado.getCantidadDePuntajes(), puntajeObtenidoDeLaPagina.getCantidadDePuntajes());
