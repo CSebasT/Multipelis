@@ -30,6 +30,15 @@ public class Pelicula {
     public Pelicula() {
     }
 
+    public Pelicula(String codigo, String titulo, int duracion, int añoLanzamiento, String sinopsis, Genero genero) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.añoLanzamiento = añoLanzamiento;
+        this.sinopsis = sinopsis;
+        this.genero = genero;
+    }
+
     public void agregarPuntaje(double nuevoPuntaje) {
         puntaje.actualizar(nuevoPuntaje);
     }

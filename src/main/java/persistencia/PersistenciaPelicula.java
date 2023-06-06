@@ -27,4 +27,12 @@ public class PersistenciaPelicula {
         session.close();
         return pelicula;
     }
+
+    public static void registrarPelicula(Pelicula pelicula) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.save(pelicula);
+        session.getTransaction().commit();
+        session.close();
+    }
 }
