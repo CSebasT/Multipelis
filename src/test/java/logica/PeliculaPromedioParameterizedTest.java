@@ -25,7 +25,7 @@ public class PeliculaPromedioParameterizedTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
         return Arrays.asList(new Object[][]{
-                {1L,3.875},{2L,3.000}
+                {1L,3.375},{2L,3.000}
         });
     }
 
