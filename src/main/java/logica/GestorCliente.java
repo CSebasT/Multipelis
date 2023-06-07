@@ -5,10 +5,10 @@ import persistencia.*;
 public class GestorCliente {
 
     public void registrarCliente(String cedula, String nombre, String apellido, String correo, String direccion, String telefono) {
-
-        Cliente cliente = new Cliente(cedula, nombre, apellido, direccion, telefono, correo);
-        PersistenciaCliente.registrarCliente(cedula, cliente);
-
+        if (verificarCedula(cedula)) {
+            Cliente cliente = new Cliente(cedula, nombre, apellido, direccion, telefono, correo);
+            PersistenciaCliente.registrarCliente(cedula, cliente);
+        }
     }
 
     public boolean verificarCedula(String cedula) {

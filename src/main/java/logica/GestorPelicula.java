@@ -76,7 +76,10 @@ public class GestorPelicula {
         return null;
     }
 
-    public void registrarPelicula() {
-
+    public void registrarPelicula(String codigo, String titulo, int duracion,int añoLanzamiento, String sinopsis,Genero genero) {
+        if (buscarPelicula(titulo) == null && verificarAño(añoLanzamiento)) {
+            Pelicula pelicula = new Pelicula(codigo, titulo, duracion, añoLanzamiento, sinopsis, genero);
+            PersistenciaPelicula.registrarPelicula(pelicula);
+        }
     }
 }
