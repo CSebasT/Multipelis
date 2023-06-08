@@ -12,8 +12,8 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
 public class PeliculaConteoParameterizedTest {
-    private Long codigoGenero;
-    private int expected;
+    private final Long codigoGenero;
+    private final int expected;
     private GestorPelicula gestorPelicula;
 
     @Before
@@ -24,7 +24,7 @@ public class PeliculaConteoParameterizedTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
         return Arrays.asList(new Object[][]{
-                {2L,3},{1L,8},{3L,4}
+                {1L,8},{2L,3},{3L,4}
         });
     }
 
