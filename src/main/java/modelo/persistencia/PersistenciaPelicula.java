@@ -1,7 +1,6 @@
-package persistencia;
+package modelo.persistencia;
 
-import logica.Cliente;
-import logica.Pelicula;
+import modelo.logica.Pelicula;
 
 import java.util.List;
 

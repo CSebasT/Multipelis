@@ -1,20 +1,19 @@
-package logica;
+package modelo;
 
+import modelo.logica.GestorPelicula;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
-public class PeliculaPromedioParameterizedTest {
+public class PeliculaConteoParameterizedTest {
     private Long codigoGenero;
-    private double expected;
+    private int expected;
     private GestorPelicula gestorPelicula;
 
     @Before
@@ -25,21 +24,19 @@ public class PeliculaPromedioParameterizedTest {
     @Parameterized.Parameters
     public static Iterable<Object[]> parameters(){
         return Arrays.asList(new Object[][]{
-                {1L,3.375},{2L,3.000},{3L,3.875}
+                {2L,3},{1L,8},{3L,4}
         });
     }
 
-    public PeliculaPromedioParameterizedTest(Long codigoGenero, double expected) {
+    public PeliculaConteoParameterizedTest(Long codigoGenero, int expected) {
         this.codigoGenero = codigoGenero;
         this.expected = expected;
     }
 
     @Test
     public void given_genre_when_points_average_then_ok() {
-        double promedio = gestorPelicula.obtenerPuntajePromedioGenero(codigoGenero);
-        assertEquals(expected,promedio, 0.01);
+        int cantidadActual = gestorPelicula.contarPeliculasGenero(codigoGenero);
+        assertEquals(expected,cantidadActual);
     }
+
 }
-
-
-

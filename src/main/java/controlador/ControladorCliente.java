@@ -1,14 +1,11 @@
 package controlador;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logica.Cliente;
-import logica.GestorCliente;
-import logica.Pelicula;
+import modelo.logica.GestorCliente;
 
 import java.io.IOException;
 

@@ -1,7 +1,6 @@
-package logica;
+package modelo.logica;
 
 import javax.persistence.*;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "alquiler")

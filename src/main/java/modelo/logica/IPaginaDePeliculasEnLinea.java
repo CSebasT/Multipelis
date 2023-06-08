@@ -1,4 +1,4 @@
-package logica;
+package modelo.logica;
 
 public interface IPaginaDePeliculasEnLinea {
 

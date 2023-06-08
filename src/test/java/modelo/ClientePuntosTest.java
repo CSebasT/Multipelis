@@ -1,10 +1,9 @@
-package logica;
+package modelo;
 
-import org.junit.AfterClass;
-import org.junit.Before;
+import modelo.logica.Cliente;
+import modelo.logica.GestorCliente;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import persistencia.PersistenciaCliente;
 
 import static org.junit.Assert.*;
 

@@ -1,13 +1,15 @@
-package logica;
+package modelo.logica;
 
-import persistencia.*;
+import modelo.persistencia.PersistenciaCliente;
 
 public class GestorCliente {
 
     public void registrarCliente(String cedula, String nombre, String apellido, String correo, String direccion, String telefono) {
         if (verificarCedula(cedula)) {
-            Cliente cliente = new Cliente(cedula, nombre, apellido, direccion, telefono, correo);
-            PersistenciaCliente.registrarCliente(cedula, cliente);
+            if (buscarCliente(cedula)==null){
+                Cliente cliente = new Cliente(cedula, nombre, apellido, direccion, telefono, correo);
+                PersistenciaCliente.registrarCliente(cedula, cliente);
+            }
         }
     }
 

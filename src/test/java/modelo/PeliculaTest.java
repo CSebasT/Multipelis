@@ -1,8 +1,9 @@
-package logica;
+package modelo;
 
+import modelo.logica.Pelicula;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import persistencia.PersistenciaPelicula;
+import modelo.persistencia.PersistenciaPelicula;
 
 import static org.junit.Assert.*;
 

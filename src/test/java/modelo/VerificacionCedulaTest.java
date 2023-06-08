@@ -1,5 +1,6 @@
-package logica;
+package modelo;
 
+import modelo.logica.GestorCliente;
 import org.junit.Before;
 import org.junit.Test;
 

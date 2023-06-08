@@ -1,8 +1,8 @@
-package logica;
+package modelo.logica;
 
 import java.util.*;
 
-import persistencia.PersistenciaPelicula;
+import modelo.persistencia.PersistenciaPelicula;
 
 public class GestorPelicula {
 

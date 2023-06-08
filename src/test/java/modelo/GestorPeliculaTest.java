@@ -1,7 +1,8 @@
-package logica;
+package modelo;
 
+import modelo.logica.GestorPelicula;
+import modelo.logica.Pelicula;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.List;

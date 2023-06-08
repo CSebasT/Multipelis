@@ -1,6 +1,6 @@
-package persistencia;
+package modelo.persistencia;
 
-import logica.Cliente;
+import modelo.logica.Cliente;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -8,7 +8,7 @@ public class PersistenciaCliente {
 
     public static boolean verificarExistenciaCliente(Session session, String cedulaAVerificar){
 
-        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM logica.Cliente WHERE cedula = :cedulaAVerificar", Long.class);
+        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM modelo.Cliente WHERE cedula = :cedulaAVerificar", Long.class);
         query.setParameter("cedulaAVerificar", cedulaAVerificar);
 
         Long count = query.uniqueResult();

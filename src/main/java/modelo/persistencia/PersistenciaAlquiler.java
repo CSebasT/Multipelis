@@ -1,7 +1,7 @@
-package persistencia;
+package modelo.persistencia;
 
-import logica.Alquiler;
-import logica.Ejemplar;
+import modelo.logica.Alquiler;
+import modelo.logica.Ejemplar;
 import org.hibernate.Session;
 
 public class PersistenciaAlquiler {

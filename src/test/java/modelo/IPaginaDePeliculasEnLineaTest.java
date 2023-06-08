@@ -1,7 +1,8 @@
-package logica;
+package modelo;
 
+import modelo.logica.IPaginaDePeliculasEnLinea;
+import modelo.logica.Puntaje;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

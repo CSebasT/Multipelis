@@ -1,10 +1,6 @@
-package logica;
+package modelo.logica;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import persistencia.*;
-
-import java.util.Calendar;
+import modelo.persistencia.PersistenciaAlquiler;
 
 
 public class GestorAlquiler {

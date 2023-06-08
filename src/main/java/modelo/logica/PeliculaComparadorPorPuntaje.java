@@ -1,4 +1,4 @@
-package logica;
+package modelo.logica;
 
 import java.util.Comparator;
 

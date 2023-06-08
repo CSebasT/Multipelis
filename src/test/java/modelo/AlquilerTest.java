@@ -1,12 +1,9 @@
-package logica;
+package modelo;
 
-import org.junit.Before;
+import modelo.logica.Alquiler;
+import modelo.logica.GestorAlquiler;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
