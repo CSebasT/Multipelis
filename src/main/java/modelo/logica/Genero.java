@@ -21,6 +21,13 @@ public class Genero {
     public Genero() {
     }
 
+    public Genero(Long codigo, Calendar fechaDescuento, String nombre, Double porcentajeDescuento) {
+        this.codigo = codigo;
+        this.fechaDescuento = fechaDescuento;
+        this.nombre = nombre;
+        this.porcentajeDescuento = porcentajeDescuento;
+    }
+
     public double obtenerDescuento() {
         double descuento = 0;
         Calendar fechaActual = Calendar.getInstance();

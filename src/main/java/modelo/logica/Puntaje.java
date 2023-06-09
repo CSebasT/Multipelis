@@ -17,6 +17,13 @@ public class Puntaje {
     public Puntaje() {
     }
 
+    public Puntaje(Long codigo, Double puntajeTotal, int cantidadDePuntajes) {
+        this.codigo = codigo;
+        this.puntajeTotal = puntajeTotal;
+        this.cantidadDePuntajes = cantidadDePuntajes;
+    }
+
+
     public Puntaje(double puntajeTotal, int cantidadDePuntajes) {
         this.puntajeTotal = puntajeTotal;
         this.cantidadDePuntajes = cantidadDePuntajes;
@@ -24,6 +31,7 @@ public class Puntaje {
 
     public void actualizar(double nuevoPuntaje) {
         puntajeTotal = (puntajeTotal*cantidadDePuntajes+nuevoPuntaje)/(cantidadDePuntajes+1);
+        cantidadDePuntajes++;
     }
 
     /*-------------------------------------------------------------*/

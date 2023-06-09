@@ -105,4 +105,18 @@ public class Alquiler {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "-----------------------------------------------------------------" +
+                "\n-                          ALQUILER                             -" +
+                "\n-----------------------------------------------------------------" +
+                "\n-                  Cliente: " + cliente.getCedula() + " " +
+                "\n-                  Dias: " + dias +"" +
+                "\n-                  Cod. Ejemplar: " + ejemplar.getCodigo() + "" +
+                "\n-                  Estado de devolucion: " + estadoDevolucion + " " +
+                "\n-                  Precio: " + precio +"" +
+                "\n-----------------------------------------------------------------";
+    }
+
 }

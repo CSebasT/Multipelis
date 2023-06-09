@@ -37,6 +37,7 @@ public class Pelicula {
         this.añoLanzamiento = añoLanzamiento;
         this.sinopsis = sinopsis;
         this.genero = genero;
+        this.puntaje = new Puntaje(0,0);
     }
 
     public void agregarPuntaje(double nuevoPuntaje) {
@@ -123,6 +124,8 @@ public class Pelicula {
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
     }
+
+
 
 
 }

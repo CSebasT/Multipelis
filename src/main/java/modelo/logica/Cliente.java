@@ -118,5 +118,20 @@ public class Cliente {
     public void setPuntosPorFidelidad(int puntosPorFidelidad) {
         this.puntosPorFidelidad = puntosPorFidelidad;
     }
+
+    @Override
+    public String toString() {
+        return "-----------------------------------------------------------------" +
+        "\n-                            CLIENTE                            -" +
+        "\n-----------------------------------------------------------------" +
+        "\n-                  Cedula: " + cedula + " " +
+        "\n-                  Nombre: " + nombre + " " +
+        "\n-                  Apellido: " + apellido +"" +
+        "\n-                  Direccion: " + direccion + " " +
+        "\n-                  Telefono: " + telefono + "" +
+        "\n-                  Correo: " + correo + "" +
+        "\n-                  Puntos: " + puntosPorFidelidad + "" +
+        "\n-----------------------------------------------------------------";
+    }
 }
 

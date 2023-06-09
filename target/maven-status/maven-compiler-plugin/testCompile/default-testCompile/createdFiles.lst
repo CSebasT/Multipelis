@@ -1,0 +1,8 @@
+modelo\AlquilerTest.class
+modelo\ClientePuntosTest.class
+modelo\PeliculaTest.class
+modelo\IPaginaDePeliculasEnLineaTest.class
+modelo\GestorPeliculaTest.class
+modelo\VerificacionCedulaTest.class
+modelo\PeliculaConteoParameterizedTest.class
+modelo\PeliculaPromedioParameterizedTest.class

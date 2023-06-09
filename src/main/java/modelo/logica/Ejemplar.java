@@ -24,6 +24,15 @@ public class Ejemplar {
 
     }
 
+    public Ejemplar(String codigo, Boolean estadoDisponibilidad, Pelicula pelicula, Double costoPorDia, int numeroDeUsos, boolean estaDesgastado ){
+        this.codigo = codigo;
+        this.estadoDisponibilidad = estadoDisponibilidad;
+        this.pelicula = pelicula;
+        this.costoPorDia = costoPorDia;
+        this.numeroDeUsos = numeroDeUsos;
+        this.estaDesgastado = estaDesgastado;
+    }
+
     public double getCostoPorDia() {
         return costoPorDia;
     }
@@ -31,12 +40,12 @@ public class Ejemplar {
     public void devolver(double puntaje) {
         estadoDisponibilidad = true;
         estaDesgastado = numeroDeUsos>=50;
+        numeroDeUsos = numeroDeUsos + 1;
         pelicula.agregarPuntaje(puntaje);
     }
 
     public void alquilar() {
         estadoDisponibilidad = false;
-        numeroDeUsos = numeroDeUsos + 1;
     }
 
     public double obtenerDescuentoGenero() {
@@ -90,4 +99,18 @@ public class Ejemplar {
     public void setEstaDesgastado(boolean estaDesgastado) {
         this.estaDesgastado = estaDesgastado;
     }
+
+    @Override
+    public String toString() {
+        return "-----------------------------------------------------------------" +
+                "\n-                        Ejemplar                               -" +
+                "\n-----------------------------------------------------------------" +
+                "\n-                  Codigo: " + codigo + " " +
+                "\n-                  Disponibilidad: " + estadoDisponibilidad + " " +
+                "\n-                  CostoXDia: " + costoPorDia +"" +
+                "\n-                  Numero usos: " + numeroDeUsos + " " +
+                "\n-                  Desgastado: " + estaDesgastado + "" +
+                "\n-----------------------------------------------------------------";
+    }
 }
+
