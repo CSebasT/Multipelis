@@ -8,7 +8,7 @@ public class PersistenciaCliente {
 
     public static boolean verificarExistenciaCliente(Session session, String cedulaAVerificar){
 
-        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM modelo.Cliente WHERE cedula = :cedulaAVerificar", Long.class);
+        Query<Long> query = session.createQuery("SELECT COUNT(*) FROM modelo.logica.Cliente WHERE cedula = :cedulaAVerificar", Long.class);
         query.setParameter("cedulaAVerificar", cedulaAVerificar);
 
         Long count = query.uniqueResult();

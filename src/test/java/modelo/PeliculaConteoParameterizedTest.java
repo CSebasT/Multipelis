@@ -1,12 +1,14 @@
 package modelo;
 
 import modelo.logica.GestorPelicula;
+import modelo.logica.Pelicula;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,10 +17,12 @@ public class PeliculaConteoParameterizedTest {
     private final Long codigoGenero;
     private final int expected;
     private GestorPelicula gestorPelicula;
+    private List<Pelicula> peliculas = null;
 
     @Before
     public void setUp(){
         gestorPelicula = new GestorPelicula();
+        peliculas = gestorPelicula.buscarPeliculas();
     }
 
     @Parameterized.Parameters
@@ -35,7 +39,7 @@ public class PeliculaConteoParameterizedTest {
 
     @Test
     public void given_genre_when_points_average_then_ok() {
-        int cantidadActual = gestorPelicula.contarPeliculasGenero(codigoGenero);
+        int cantidadActual = gestorPelicula.contarPeliculasGenero(codigoGenero,peliculas);
         assertEquals(expected,cantidadActual);
     }
 

@@ -1,6 +1,8 @@
 package modelo.logica;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class MultipelisEjecutable {
@@ -42,6 +44,7 @@ public class MultipelisEjecutable {
 
 
 
+
         System.out.println("Alquiler 02: \n" + alquiler02);
         System.out.println("Ejemplar 02: \n" + ejemplar02);
 
@@ -56,7 +59,69 @@ public class MultipelisEjecutable {
         System.out.println("Alquiler 02: \n" + alquiler02);
         System.out.println("Ejemplar 02: \n" + ejemplar02);
 
+        List<Pelicula> peliculas = new ArrayList<>();
+        peliculas.add(pelicula01);
+        peliculas.add(pelicula02);
 
+        System.out.println("\nGestion de Peliculas:\n");
+        GestorPelicula gestorPelicula01 = new GestorPelicula();
+
+        double puntajePromedioGenero01 = gestorPelicula01.obtenerPuntajePromedioGenero(1l,peliculas);
+        double puntajePromedioGenero02 = gestorPelicula01.obtenerPuntajePromedioGenero(2l,peliculas);
+        System.out.println(
+                "Promedio Genero 01: \n" +
+                "-----------------------------------------------------------------" +
+                "\n-                        Peliculas Genero TERROR                               -" +
+                "\n-----------------------------------------------------------------" +
+
+                "\n-                  Puntaje Promedio : " + puntajePromedioGenero01 + " " +
+                "\n-----------------------------------------------------------------");
+        System.out.println(
+                "Promedio Genero 02: \n" +
+                "-----------------------------------------------------------------" +
+                "\n-                        Peliculas Genero ACCION                               -" +
+                "\n-----------------------------------------------------------------" +
+
+                "\n-                  Puntaje Promedio : " + puntajePromedioGenero02 + " " +
+                "\n-----------------------------------------------------------------");
+
+        int contarPeliculasGenero01 = gestorPelicula01.contarPeliculasGenero(1L, peliculas);
+        int contarPeliculasGenero02 = gestorPelicula01.contarPeliculasGenero(2L, peliculas);
+        System.out.println(
+                "Contar Peliculas 01: \n" +
+                        "-----------------------------------------------------------------" +
+                        "\n-                        Peliculas Genero TERROR                               -" +
+                        "\n-----------------------------------------------------------------" +
+
+                        "\n-                  Conteo: " + contarPeliculasGenero01 + " " +
+                        "\n-----------------------------------------------------------------");
+        System.out.println(
+                "Contar Peliculas 02: \n" +
+                        "-----------------------------------------------------------------" +
+                        "\n-                        Peliculas Genero ACCION                               -" +
+                        "\n-----------------------------------------------------------------" +
+
+                        "\n-                  Conteo: " + contarPeliculasGenero02 + " " +
+                        "\n-----------------------------------------------------------------");
+
+        double duracionPromedioGenero01 = gestorPelicula01.obtenerDuracionPromedioGenero(1L, peliculas);
+        double duracionPromedioGenero02 = gestorPelicula01.obtenerDuracionPromedioGenero(2L, peliculas);
+        System.out.println(
+                "Duracion Genero 01: \n" +
+                        "-----------------------------------------------------------------" +
+                        "\n-                        Peliculas Genero TERROR                               -" +
+                        "\n-----------------------------------------------------------------" +
+
+                        "\n-                  Duracion Promedio: " + duracionPromedioGenero01 + " " +
+                        "\n-----------------------------------------------------------------");
+        System.out.println(
+                "Duracion Genero 02: \n" +
+                        "-----------------------------------------------------------------" +
+                        "\n-                        Peliculas Genero ACCION                               -" +
+                        "\n-----------------------------------------------------------------" +
+
+                        "\n-                  Duracion Promedio: " + duracionPromedioGenero02 + " " +
+                        "\n-----------------------------------------------------------------");
     }
 
 }

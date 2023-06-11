@@ -6,32 +6,32 @@ import modelo.persistencia.PersistenciaPelicula;
 
 public class GestorPelicula {
 
-    public double obtenerPuntajePromedioGenero(Long codigoGenero) {
+    public double obtenerPuntajePromedioGenero(Long codigoGenero,List<Pelicula> peliculas) {
         double puntaje = 0;
         double numeroElementos = 0;
-        List<Pelicula> peliculas = obtenerPeliculasMismoGenero(codigoGenero);
-        for(Pelicula pelicula:peliculas){
+        List<Pelicula> peliculasGenero = obtenerPeliculasMismoGenero(codigoGenero, peliculas);
+        for(Pelicula pelicula:peliculasGenero){
             puntaje += pelicula.getPuntaje().getPuntajeTotal();
             numeroElementos++;
         }
         return (puntaje / numeroElementos);
     }
 
-    public int contarPeliculasGenero(Long codigoGenero) {
-        List<Pelicula> peliculas = obtenerPeliculasMismoGenero(codigoGenero);
+    public int contarPeliculasGenero(Long codigoGenero, List<Pelicula> peliculas) {
+        List<Pelicula> peliculasGenero = obtenerPeliculasMismoGenero(codigoGenero, peliculas);
         int contadorPeliculas = 0;
-        for (Pelicula pelicula : peliculas) {
+        for (Pelicula pelicula : peliculasGenero) {
             contadorPeliculas++;
         }
         return contadorPeliculas;
     }
 
-    public int obtenerDuracionPromedioGenero(Long codigoGenero) {
+    public int obtenerDuracionPromedioGenero(Long codigoGenero,List<Pelicula> peliculas) {
         int duracionTotal = 0;
         int duracionPromedio;
         int numeroElementos = 0;
-        List<Pelicula> peliculas = obtenerPeliculasMismoGenero(codigoGenero);
-        for (Pelicula pelicula : peliculas) {
+        List<Pelicula> peliculasGenero= obtenerPeliculasMismoGenero(codigoGenero,peliculas);
+        for (Pelicula pelicula : peliculasGenero) {
             duracionTotal += pelicula.getDuracion();
             numeroElementos++;
         }
@@ -41,8 +41,8 @@ public class GestorPelicula {
         return (duracionTotal / numeroElementos);
     }
 
-    public List<Pelicula> obtenerTresMejoresPeliculasGenero(Long codigoGenero) {
-        List<Pelicula> mejoresPeliculas = obtenerPeliculasMismoGenero(codigoGenero);
+    public List<Pelicula> obtenerTresMejoresPeliculasGenero(Long codigoGenero, List<Pelicula> peliculas) {
+        List<Pelicula> mejoresPeliculas = obtenerPeliculasMismoGenero(codigoGenero, peliculas);
         Collections.sort(mejoresPeliculas, new PeliculaComparadorPorPuntaje());
         for (int i=3; i<mejoresPeliculas.size();i++){
             mejoresPeliculas.remove(i);
@@ -50,8 +50,9 @@ public class GestorPelicula {
         return mejoresPeliculas;
     }
 
-    public List<Pelicula> obtenerPeliculasMismoGenero(Long codigoGenero){
-        List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas();
+    public List<Pelicula> obtenerPeliculasMismoGenero(Long codigoGenero, List<Pelicula> peliculas){
+        //List<Pelicula> peliculas = PersistenciaPelicula.consultarPeliculas();
+
         List<Pelicula> listaPeliculasMismoGenero = new ArrayList<Pelicula>();
         for(Pelicula pelicula: peliculas){
             if (pelicula.getGenero().getCodigo() == codigoGenero) {
@@ -59,6 +60,10 @@ public class GestorPelicula {
             }
         }
         return listaPeliculasMismoGenero;
+    }
+    public List<Pelicula> buscarPeliculas(){
+
+        return PersistenciaPelicula.consultarPeliculas();
     }
 
     public boolean verificarAño(int año) {
@@ -82,4 +87,5 @@ public class GestorPelicula {
             PersistenciaPelicula.registrarPelicula(pelicula);
         }
     }
+
 }
